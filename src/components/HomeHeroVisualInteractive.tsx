@@ -25,8 +25,8 @@ const HeroVisualInteractive: React.FC<HeroVisualInteractiveProps> = ({
 
 export default HeroVisualInteractive;
 
-function PositionHero(current_position: number) {
-    return
-
-
-}
+// function PositionHero(current_position: number) {
+//     return
+//
+//
+// }
