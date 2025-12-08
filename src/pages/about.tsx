@@ -33,7 +33,6 @@ const TerminalSkills: React.FC = () => {
   }, [hasAnimated]);
 
   const startAnimation = () => {
-    // Type out the command first
     const command = terminalLines[0].prompt || "";
     let charIndex = 0;
     
@@ -42,7 +41,6 @@ const TerminalSkills: React.FC = () => {
       setTypedChars(charIndex);
       if (charIndex >= command.length) {
         clearInterval(typeCommand);
-        // Then reveal lines one by one
         terminalLines.forEach((_, index) => {
           setTimeout(() => {
             setVisibleLines(index + 1);

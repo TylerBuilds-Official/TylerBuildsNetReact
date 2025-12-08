@@ -19,9 +19,7 @@ const Contact: React.FC = () => {
     const fd = new FormData(form);
     const name = String(fd.get("name") || "");
     const email = String(fd.get("email") || "");
-    // const details = String(fd.get("details") || "");
 
-    // Map challenge to readable text
     const challengeMap = {
       "manual-data-entry": "Too much manual data entry",
       "disconnected-tools": "Disconnected tools",
@@ -34,8 +32,7 @@ const Contact: React.FC = () => {
     setStatus(
       `Thanks${name ? `, ${name}` : ""}! I'll review your situation and reply within 24 hours.\n` +
       `Challenge: ${challengeMap[challenge]}\n` +
-      `We'll follow up at ${email}.\n\n` +
-      `(Demo mode — wire this to Formspree/Resend/serverless when ready.)`
+      `We'll follow up at ${email}.\n\n`
     );
     form.reset();
   }

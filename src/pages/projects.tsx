@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState} from "react";
 import ProcessStepper from "../components/ProjectsProcessStepper.tsx";
 import Card from "../components/GlobalUICard.tsx";
 import ProjectsInvSyncAutomation from "../components/ProjectsInvSyncAutomation.tsx";
 import ProjectsSalesDashboard from "../components/ProjectsSalesDashboard.tsx";
 import ProjectsAISupportDemo from "../components/ProjectsAISupportDemo.tsx";
+import ProjectsAnimatedMetrics from "../components/ProjectsAnimatedMetrics.tsx";
 import { Link } from "react-router-dom";
 
 type Project = {
@@ -80,58 +81,6 @@ const projects: Project[] = [
     heroMetric: { value: 50, suffix: "%", label: "Faster Onboarding" },
   },
 ];
-
-// Animated counter component
-const AnimatedMetric: React.FC<{ value: number; suffix: string; label: string }> = ({ value, suffix, label }) => {
-  const [displayValue, setDisplayValue] = useState(0);
-  const [hasAnimated, setHasAnimated] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !hasAnimated) {
-          setHasAnimated(true);
-          animateValue();
-        }
-      },
-      { threshold: 0.5 }
-    );
-
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [hasAnimated, value]);
-
-  const animateValue = () => {
-    const duration = 1200;
-    const steps = 40;
-    const stepDuration = duration / steps;
-    let current = 0;
-
-    const timer = setInterval(() => {
-      current++;
-      const progress = current / steps;
-      // Ease out cubic
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setDisplayValue(Math.round(eased * value));
-
-      if (current >= steps) {
-        clearInterval(timer);
-        setDisplayValue(value);
-      }
-    }, stepDuration);
-  };
-
-  return (
-    <div className="hero-metric" ref={ref}>
-      <div className="hero-metric-value">
-        <span className="hero-metric-number">{displayValue}</span>
-        <span className="hero-metric-suffix">{suffix}</span>
-      </div>
-      <span className="hero-metric-label">{label}</span>
-    </div>
-  );
-};
 
 const Projects: React.FC = () => {
   const [selectedDemo, setSelectedDemo] = useState<string | null>(null);
@@ -215,7 +164,7 @@ const Projects: React.FC = () => {
             >
               {/* Hero Metric */}
               {p.heroMetric && (
-                <AnimatedMetric 
+                <ProjectsAnimatedMetrics
                   value={p.heroMetric.value} 
                   suffix={p.heroMetric.suffix} 
                   label={p.heroMetric.label} 
