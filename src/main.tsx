@@ -2,9 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './app'
 import './styles/globals.css'
-import logoUrl from './assets/TB_logo.svg'
+import logoUrl from './assets/TB_logo.png'
 
-// Dynamically set the favicon to the project logo (keeps assets in src/)
 const ensureFavicon = () => {
   const head = document.head;
   let link = head.querySelector<HTMLLinkElement>('link[rel="icon"]');

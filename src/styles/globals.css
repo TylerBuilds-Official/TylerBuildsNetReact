@@ -283,14 +283,49 @@ socials a:hover {
     animation: shake 0.5s ease-in-out;
 }
 
-@media (prefers-reduced-motion: reduce) {
-    .float {
-        animation: none;
+/* Falling logos */
+.falling-logos-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 50;
+    overflow: hidden;
+}
+
+.falling-logo {
+    position: absolute;
+    top: -80px; /* start ABOVE viewport */
+    opacity: 0;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, .3));
+    animation-name: fallDown;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fallDown {
+    0% {
+        opacity: 0.9;
+        transform: translateY(0) rotate(0deg);
     }
-    .logo-frame.shake {
-        animation: none;
+    15% {
+        opacity: 1;
+    }
+    85% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(110vh) rotate(var(--rotation, 360deg));
     }
 }
+
+@media (prefers-reduced-motion: reduce) {
+    .falling-logo {
+        animation: none;
+        display: none;
+    }
+}
+
 
 .hero .eyebrow {
     color: var(--muted);

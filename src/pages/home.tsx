@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import logoUrl from "../assets/TB_logo.svg";
+import logoUrl from "../assets/TB_logo.png";
 import HeroVisualInteractive from "../components/HomeHeroVisualInteractive.tsx";
 
 const Home: React.FC = () => {

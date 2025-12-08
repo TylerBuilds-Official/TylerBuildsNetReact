@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import logoUrl from "../assets/TB_logo.svg";
+import logoUrl from "../assets/TB_logo.png";
 
 const Navbar: React.FC = () => {
   return (
