@@ -6,27 +6,27 @@ const steps = [
     {
         title: "Discovery",
         desc:
-            "We clarify goals, users, constraints, and success metrics. Quick workshops and a lightweight brief to align scope.",
+            "We talk through your challenge, current workflow, and goals. I ask questions to understand exactly what you need and what success looks like.",
     },
     {
-        title: "Design",
+        title: "Proposal",
         desc:
-            "Wireframes to UI. We validate flows and content early. Accessibility and responsiveness are designed in from the start.",
+            "I send a clear proposal with scope, timeline, and pricing. We refine it together until it's exactly right — no surprises or hidden costs.",
     },
     {
         title: "Build",
         desc:
-            "Iterative development with frequent demos. Type‑safe APIs, tests where it matters, and performance by default.",
+            "I build your solution in phases, showing you progress regularly. You give feedback, I adjust. This keeps us aligned and ensures it fits your needs.",
     },
     {
-        title: "Launch",
+        title: "Refine",
         desc:
-            "Deploy with CI/CD, monitoring, and analytics. We QA, polish, and switch traffic on with a rollback plan.",
+            "We polish everything based on real-world testing and your team's feedback. Training if needed, documentation provided.",
     },
     {
-        title: "Support",
+        title: "Launch & Support",
         desc:
-            "Post‑launch iteration, fixes, and small enhancements. Optional retainers keep things running smoothly.",
+            "Deploy smoothly with monitoring in place. I'm available for questions, adjustments, and ongoing improvements as your business grows.",
     },
 ];
 

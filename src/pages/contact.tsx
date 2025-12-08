@@ -1,25 +1,17 @@
 import React, { useState } from "react";
 
-
 const CALENDAR_URL = "https://calendly.com/tylere-tylerbuilds/project-meeting-15-minutes?hide_gdpr_banner=1&background_color=12161b&text_color=5aa9ff&primary_color=5aa9ff";
 
 const Contact: React.FC = () => {
   const [status, setStatus] = useState<string | null>(null);
-  const [projectType, setProjectType] = useState<
-    | "New website"
-    | "Redesign"
-    | "Web app"
-    | "Ongoing dev support"
-    | "Not sure"
-  >("New website");
-  const [budget, setBudget] = useState<
-    | "<$2k"
-    | "$2–5k"
-    | "$5–10k"
-    | "$10–20k"
-    | "$20k+"
-    | "Not sure"
-  >("$2–5k");
+  const [challenge, setChallenge] = useState<
+    | "manual-data-entry"
+    | "disconnected-tools"
+    | "repetitive-tasks"
+    | "need-reporting"
+    | "slow-customer-service"
+    | "other"
+  >("manual-data-entry");
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -27,116 +19,213 @@ const Contact: React.FC = () => {
     const fd = new FormData(form);
     const name = String(fd.get("name") || "");
     const email = String(fd.get("email") || "");
-    // @ts-ignore
-      const message = String(fd.get("message") || "");
-    // Message unused, backend doesn't exist yet
+    // const details = String(fd.get("details") || "");
+
+    // Map challenge to readable text
+    const challengeMap = {
+      "manual-data-entry": "Too much manual data entry",
+      "disconnected-tools": "Disconnected tools",
+      "repetitive-tasks": "Repetitive tasks",
+      "need-reporting": "Need better reporting",
+      "slow-customer-service": "Customer service takes too long",
+      "other": "Other challenge"
+    };
 
     setStatus(
-      `Thanks${name ? `, ${name}` : ""}! I’ll reply within 24 hours (Mon–Fri).\n` +
-      `Project type: ${projectType} · Budget: ${budget}.\n` +
-      `We’ll follow up at ${email}. (Submission not actually sent — wire this to Formspree/Resend/serverless when ready.)`
+      `Thanks${name ? `, ${name}` : ""}! I'll review your situation and reply within 24 hours.\n` +
+      `Challenge: ${challengeMap[challenge]}\n` +
+      `We'll follow up at ${email}.\n\n` +
+      `(Demo mode — wire this to Formspree/Resend/serverless when ready.)`
     );
     form.reset();
   }
 
   return (
-    <section className="stacked">
-      <h2>Contact</h2>
-      <p>Have an opportunity or question? I’d love to hear from you.</p>
-      <div className="grid two">
-        {/* Left: conversion-focused short form */}
-        <form className="card" onSubmit={onSubmit} noValidate>
-          <label>
-            <span>Name</span>
-            <input name="name" type="text" required placeholder="Your name" />
-          </label>
-          <label>
-            <span>Email</span>
-            <input name="email" type="email" required placeholder="you@example.com" />
-          </label>
-
-          <fieldset
-            aria-label="Project type"
-            style={{ border: "1px solid var(--border)", borderRadius: 10, padding: 12 }}
-          >
-            <legend className="muted" style={{ padding: "0 6px" }}>Project type</legend>
-            <div role="radiogroup" aria-label="Quick select project type" className="segmented" style={{ flexWrap: "wrap" }}>
-              {[
-                "New website",
-                "Redesign",
-                "Web app",
-                "Ongoing dev support",
-                "Not sure",
-              ].map((label) => (
-                <button
-                  key={label}
-                  type="button"
-                  role="radio"
-                  aria-checked={projectType === label}
-                  className={projectType === label ? "active" : ""}
-                  onClick={() => setProjectType(label as typeof projectType)}
-                  style={{ margin: 4 }}
-                >
-                  {label}
-                </button>
-              ))}
-            </div>
-          </fieldset>
-
-          <label>
-            <span>Rough budget</span>
-            <select value={budget} onChange={(e) => setBudget(e.target.value as typeof budget)}>
-              <option value="<$2k">Under $2k</option>
-              <option value="$2–5k">$2–5k</option>
-              <option value="$5–10k">$5–10k</option>
-              <option value="$10–20k">$10–20k</option>
-              <option value="$20k+">$20k+</option>
-              <option value="Not sure">Not sure</option>
-            </select>
-          </label>
-
-          <label>
-            <span>Message</span>
-            <textarea name="message" rows={5} required placeholder="Tell me a bit about your goals, timelines, and what success looks like." />
-          </label>
-
-          <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
-            <button className="btn primary" type="submit">Send</button>
-            <a className="btn" href={CALENDAR_URL} target="_blank" rel="noreferrer">
-              Book a free 15‑minute call
-            </a>
-          </div>
-          <p className="muted" style={{ marginTop: 8 }}>I reply within 24 hours, Monday – Saturday.</p>
-
-          {status && (
-            <p className="muted" role="status" style={{ whiteSpace: "pre-wrap" }}>
-              {status}
-            </p>
-          )}
-        </form>
-
-        <div className="card">
-          <h3>Quick chat</h3>
-          <p className="muted">Prefer to talk it through? Grab a time that works for you.</p>
-          <p>
-            <a className="btn primary" href={CALENDAR_URL} target="_blank" rel="noreferrer">Book a free 15‑minute call</a>
-          </p>
-          <p className="muted">I reply to messages within 24 hours (Mon–Fri).</p>
-          <hr style={{ border: 0, borderTop: "1px solid var(--border)", margin: "14px 0" }} />
-          <h3>Elsewhere</h3>
-          <ul>
-            <li><a href="mailto:info@tylerbuilds.net">info@tylerbuilds.net</a></li>
-            <li><a href="https://github.com/tylerbuilds" target="_blank" rel="noreferrer">GitHub</a></li>
-            <li><a href="https://www.linkedin.com/in/tylerbuilds" target="_blank" rel="noreferrer">LinkedIn</a></li>
-          </ul>
-        </div>
+    <section className="container stacked">
+      <div>
+        <h2>Let's Talk About Your Challenge</h2>
+        <p className="muted" style={{ maxWidth: "70ch" }}>
+          Tell me about the problem you're facing. I'll review your situation and we'll schedule a call to explore solutions together — no pressure, no obligation.
+        </p>
       </div>
 
+      <div className="grid two">
+        <form className="card" onSubmit={onSubmit} noValidate>
+          <div className="stacked">
+            <div>
+              <h3>What's your biggest challenge?</h3>
+              <p className="muted">Choose the one that sounds most like your situation:</p>
+            </div>
 
+            <fieldset aria-label="Main challenge" className="fieldset">
+
+              <legend className="muted legend-pad">Select your challenge</legend>
+              <div className="stacked" style={{ gap: 8 }}>
+
+                  <label className="row" style={{ margin: 0, cursor: "pointer" }}>
+                  <input 
+                    type="radio" 
+                    name="challenge"
+                    value="manual-data-entry"
+                    checked={challenge === "manual-data-entry"}
+                    onChange={(e) => setChallenge(e.target.value as typeof challenge)}/>
+                  <span>Too much manual data entry</span>
+                </label>
+
+                <label className="row" style={{ margin: 0, cursor: "pointer" }}>
+                  <input 
+                    type="radio" 
+                    name="challenge"
+                    value="disconnected-tools"
+                    checked={challenge === "disconnected-tools"}
+                    onChange={(e) => setChallenge(e.target.value as typeof challenge)}/>
+                  <span>Disconnected tools that don't talk to each other</span>
+                </label>
+
+                <label className="row" style={{ margin: 0, cursor: "pointer" }}>
+                  <input
+                    type="radio" 
+                    name="challenge"
+                    value="repetitive-tasks"
+                    checked={challenge === "repetitive-tasks"}
+                    onChange={(e) => setChallenge(e.target.value as typeof challenge)}/>
+                  <span>Repetitive tasks eating up time</span>
+                </label>
+
+                <label className="row" style={{ margin: 0, cursor: "pointer" }}>
+                  <input 
+                    type="radio" 
+                    name="challenge"
+                    value="need-reporting"
+                    checked={challenge === "need-reporting"}
+                    onChange={(e) => setChallenge(e.target.value as typeof challenge)}/>
+                  <span>Need better reporting and visibility</span>
+                </label>
+
+                <label className="row" style={{ margin: 0, cursor: "pointer" }}>
+                  <input 
+                    type="radio" 
+                    name="challenge"
+                    value="slow-customer-service"
+                    checked={challenge === "slow-customer-service"}
+                    onChange={(e) => setChallenge(e.target.value as typeof challenge)}/>
+                  <span>Customer service is too slow</span>
+                </label>
+
+                <label className="row" style={{ margin: 0, cursor: "pointer" }}>
+                  <input 
+                    type="radio" 
+                    name="challenge"
+                    value="other"
+                    checked={challenge === "other"}
+                    onChange={(e) => setChallenge(e.target.value as typeof challenge)}/>
+                  <span>Something else (explain below)</span>
+                </label>
+
+              </div>
+            </fieldset>
+
+            <label>
+              <span>Tell me more about it</span>
+              <textarea 
+                name="details" 
+                rows={5} 
+                required 
+                placeholder="What's this costing you in time or money? What have you tried so far? How many people does this affect?"/>
+            </label>
+
+            <hr style={{ border: 0, borderTop: "1px solid var(--border)", margin: "8px 0" }} />
+
+            <label>
+              <span>Your name</span>
+              <input name="name" type="text" required placeholder="Your name" />
+            </label>
+
+            <label>
+              <span>Email</span>
+              <input name="email" type="email" required placeholder="you@example.com" />
+            </label>
+
+            <label>
+              <span>Phone (optional)</span>
+              <input name="phone" type="tel" placeholder="555-123-4567" />
+            </label>
+
+            <label>
+              <span>Company name (optional)</span>
+              <input name="company" type="text" placeholder="Your company" />
+            </label>
+
+            <button className="btn primary" type="submit">Send My Challenge</button>
+
+            <p className="muted" style={{ marginTop: 8 }}>I'll reply within 24 hours, Monday – Saturday.</p>
+
+            {status && (
+              <div className="card" style={{ background: "var(--bg)", marginTop: 12 }}>
+                <p className="muted" role="status" style={{ whiteSpace: "pre-wrap", margin: 0 }}>
+                  {status}
+                </p>
+              </div>
+            )}
+          </div>
+        </form>
+
+        <div className="stacked">
+          <div className="card">
+            <div className="stacked">
+              <h3>What happens next?</h3>
+              <div className="stacked" style={{ gap: 16 }}>
+                <div>
+                  <p className="muted" style={{ margin: 0 }}>
+                    <strong>1. I'll review your situation</strong>
+                  </p>
+                  <p className="muted" style={{ fontSize: "0.9rem", marginTop: 4 }}>
+                    Within 24 hours, I'll send a thoughtful reply about your challenge and whether automation makes sense.
+                  </p>
+                </div>
+                <div>
+                  <p className="muted" style={{ margin: 0 }}>
+                    <strong>2. We'll schedule a free call</strong>
+                  </p>
+                  <p className="muted" style={{ fontSize: "0.9rem", marginTop: 4 }}>
+                    30 minutes to dive deeper into your workflow and explore potential solutions. No sales pitch.
+                  </p>
+                </div>
+                <div>
+                  <p className="muted" style={{ margin: 0 }}>
+                    <strong>3. I'll send you a clear proposal</strong>
+                  </p>
+                  <p className="muted" style={{ fontSize: "0.9rem", marginTop: 4 }}>
+                    If it's a fit, you'll get a detailed proposal with timeline, pricing, and exactly what we'll build. No surprises.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="card">
+            <div className="stacked">
+              <h3>Or book a call directly</h3>
+              <p className="muted">Prefer to talk first? No problem — grab a time that works for you.</p>
+              <a className="btn primary" href={CALENDAR_URL} target="_blank" rel="noreferrer">
+                Schedule Free 30-Minute Call
+              </a>
+            </div>
+          </div>
+
+          <div className="card">
+            <div className="stacked">
+              <h3>Other ways to reach me</h3>
+              <ul style={{ margin: 0, paddingLeft: 20 }}>
+                <li><a href="mailto:info@tylerbuilds.net">info@tylerbuilds.net</a></li>
+                <li><a href="https://github.com/tylerbuilds-official" target="_blank" rel="noreferrer">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/tyler-emery-15a612396/" target="_blank" rel="noreferrer">LinkedIn</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
-
-
-
   );
 };
 
