@@ -1868,6 +1868,17 @@ a:hover {
     line-height: 1.6;
 }
 
+.faq-content p {
+    opacity: 1;
+    transition: opacity .2s ease;
+}
+
+.faq-item:not(.open) .faq-content p {
+    opacity: 0;
+    padding-bottom: 0;
+}
+
+
 /* Guides page responsive */
 @media (max-width: 900px) {
     .guides-grid {
