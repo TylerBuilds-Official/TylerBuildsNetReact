@@ -80,7 +80,6 @@ const ProjectsAISupportDemo: React.FC<{ onClose: () => void }> = ({ onClose }) =
     setMessageCount((prev) => prev + 1);
 
     try {
-      // Build conversation history for API
       const conversationHistory = [
         { role: "system", content: SYSTEM_PROMPT },
         ...messages
@@ -89,19 +88,19 @@ const ProjectsAISupportDemo: React.FC<{ onClose: () => void }> = ({ onClose }) =
         { role: "user", content: content.trim() },
       ];
 
-      const response = await fetch("https://api.openai.com/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
-        },
-        body: JSON.stringify({
-          model: "gpt-4o-mini",
-          messages: conversationHistory,
-          max_tokens: 150,
-          temperature: 0.7,
-        }),
-      });
+        const response = await fetch("/.netlify/functions/ai-support", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                model: "gpt-4o-mini",
+                messages: conversationHistory,
+                max_tokens: 150,
+                temperature: 0.7,
+            }),
+        });
+
 
       if (!response.ok) {
         throw new Error("API request failed");
