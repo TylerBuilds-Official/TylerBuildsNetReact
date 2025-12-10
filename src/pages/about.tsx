@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import {Link} from "react-router-dom";
 
 const terminalLines = [
   { prompt: "$ tyler --skills", delay: 0 },
@@ -216,7 +217,8 @@ const About: React.FC = () => {
       <section className="cta-strip" role="region" aria-label="Work together">
         <div className="container cta-strip-inner">
           <p><strong>Like what you see?</strong> Let's build something together.</p>
-          <a href="/contact" className="btn primary">Get in Touch</a>
+          <Link to="/contact" className="btn primary">Get in Touch</Link>
+
         </div>
       </section>
     </>
