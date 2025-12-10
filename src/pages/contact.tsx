@@ -4,6 +4,7 @@ const CALENDAR_URL = "https://calendly.com/tylere-tylerbuilds/project-meeting-15
 
 const Contact: React.FC = () => {
   const [status, setStatus] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
   const [challenge, setChallenge] = useState<
     | "manual-data-entry"
     | "disconnected-tools"
@@ -13,12 +14,19 @@ const Contact: React.FC = () => {
     | "other"
   >("manual-data-entry");
 
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const form = e.currentTarget as HTMLFormElement;
+    setLoading(true);
+    setStatus(null);
+
+    const form = e.currentTarget;
     const fd = new FormData(form);
+
     const name = String(fd.get("name") || "");
     const email = String(fd.get("email") || "");
+    const details = String(fd.get("details") || "");
+    const phone = String(fd.get("phone") || "");
+    const company = String(fd.get("company") || "");
 
     const challengeMap = {
       "manual-data-entry": "Too much manual data entry",
@@ -26,16 +34,47 @@ const Contact: React.FC = () => {
       "repetitive-tasks": "Repetitive tasks",
       "need-reporting": "Need better reporting",
       "slow-customer-service": "Customer service takes too long",
-      "other": "Other challenge"
+      "other": "Other challenge",
     };
 
-    setStatus(
-      `Thanks${name ? `, ${name}` : ""}! I'll review your situation and reply within 24 hours.\n` +
-      `Challenge: ${challengeMap[challenge]}\n` +
-      `We'll follow up at ${email}.\n\n`
-    );
-    form.reset();
+    const selectedChallenge = challengeMap[challenge];
+
+    const subject = `New challenge from ${name}: ${selectedChallenge}`;
+    const body = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nCompany: ${company}\n\nDetails:\n${details}`;
+
+    try {
+      const response = await fetch("/.netlify/functions/send-email", {
+        method: "POST",
+        body: JSON.stringify({ subject, body }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send email");
+      }
+
+      setStatus(
+          `Thanks${name ? `, ${name}` : ""}! I'll review your situation and reply within 24 hours.\n` +
+          `We'll follow up at ${email}.\n\n`
+      );
+
+      form.reset();
+      setChallenge("manual-data-entry");
+
+    } catch (error) {
+      console.error(error);
+      setStatus(
+          "Whoops! Something went wrong. I still want to hear from you!\n" +
+          "Please send your situation over to info@tylerbuilds.net\n\n" +
+          "Here's what you sent:\n\n" +
+          subject + "\n" +
+          body + "\n" +
+          "Thanks!"
+      );
+    } finally {
+      setLoading(false);
+    }
   }
+
 
   return (
     <section className="container stacked">
@@ -153,7 +192,9 @@ const Contact: React.FC = () => {
               <input name="company" type="text" placeholder="Your company" />
             </label>
 
-            <button className="btn primary" type="submit">Send My Challenge</button>
+            <button className="btn primary" type="submit" disabled={loading}>
+              {loading ? "Sending..." : "Send My Challenge"}
+            </button>
 
             <p className="muted" style={{ marginTop: 8 }}>I'll reply within 24 hours, Monday – Saturday.</p>
 

@@ -9,7 +9,6 @@ export const handler: Handler = async (event, context) => {
     try {
         const { subject, body } = JSON.parse(event.body || "{}");
 
-        // These variables should be set in your Netlify Site Settings UI
         const endpoint = process.env.ENDPOINT;
         const recipient = process.env.RECIPIENT;
 
