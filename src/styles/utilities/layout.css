@@ -1,0 +1,64 @@
+.container {
+    width: 100%;
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.app-root {
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+}
+
+main.container {
+    flex: 1;
+    padding: 56px 20px;
+}
+
+/* Simple layout rows */
+.row {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;               /* consistent spacing between radio + text */
+    align-items: flex-start;    /* vertical alignment */
+    justify-content: flex-start; /* keep everything left aligned */
+}
+
+.row-between {
+    justify-content: space-between;
+}
+
+.grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.grid.two {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* Tighter grid gap helper */
+.grid-tight {
+    gap: 8px;
+}
+
+.stacked {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.lower-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    flex-wrap: wrap;
+}
+

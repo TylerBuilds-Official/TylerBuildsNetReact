@@ -1,0 +1,207 @@
+/* Hero */
+.hero {
+    padding: 88px 0;
+    position: relative;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+            radial-gradient(800px 400px at 10% 10%, rgba(90, 169, 255, .12), transparent 60%),
+            radial-gradient(800px 400px at 90% 20%, rgba(90, 169, 255, .08), transparent 60%);
+    border-radius: 8px;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 36px;
+    align-items: center;
+    position: relative;
+    padding: 56px;
+}
+
+.hero-copy {
+    z-index: 1;
+}
+
+.hero-visual {
+    display: grid;
+    place-items: center;
+    margin-bottom: -75px;
+}
+
+.logo-frame {
+    background: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, 0));
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow: var(--shadow);
+    transition: transform .25s ease, box-shadow .25s ease;
+    transform-style: preserve-3d;
+}
+
+.logo-frame img {
+    width: min(320px, 60vw);
+    height: auto;
+    display: block;
+}
+
+.logo-frame:hover {
+    transform: perspective(800px) rotateX(6deg) rotateY(-6deg) translateY(-3px);
+    transform-origin: center bottom;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, .35);
+}
+
+.logo-frame.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+.logo-frame.float.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+/* Falling logos */
+.falling-logos-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 50;
+    overflow: hidden;
+}
+
+.falling-logo {
+    position: absolute;
+    top: -80px; /* start ABOVE viewport */
+    opacity: 0;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, .3));
+    animation-name: fallDown;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fallDown {
+    0% {
+        opacity: 0.9;
+        transform: translateY(0) rotate(0deg);
+    }
+    15% {
+        opacity: 1;
+    }
+    85% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(110vh) rotate(var(--rotation, 360deg));
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .falling-logo {
+        animation: none;
+        display: none;
+    }
+}
+
+.hero .eyebrow {
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.85rem;
+}
+
+.hero .subtitle {
+    color: var(--muted);
+    font-size: clamp(1rem, 1vw + .9rem, 1.15rem);
+    max-width: 60ch;
+}
+
+/* Features */
+.features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding: 32px 0 40px;
+}
+
+.features .feature h3 {
+    margin-top: 4px;
+}
+
+/* Responsive - Tablet */
+@media (max-width: 768px) {
+    .hero {
+        padding: 64px 0;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding: 32px;
+    }
+
+    .features {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .logo-frame {
+        padding: 18px;
+    }
+
+    .logo-frame img {
+        width: min(280px, 70vw);
+    }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 640px) {
+    .hero {
+        padding: 48px 0;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr;
+        padding: 20px;
+        gap: 24px;
+    }
+
+    .hero .subtitle {
+        font-size: clamp(0.95rem, 2vw, 1.05rem);
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 24px 0 32px;
+    }
+
+    .logo-frame {
+        padding: 16px;
+    }
+
+    .logo-frame img {
+        width: min(240px, 80vw);
+    }
+
+    /* Disable 3D effects on mobile for performance */
+    .logo-frame:hover {
+        transform: translateY(-2px);
+    }
+}
+
+/* Responsive - Small Mobile */
+@media (max-width: 480px) {
+    .hero {
+        padding: 40px 0;
+    }
+
+    .hero-grid {
+        padding: 16px;
+        gap: 20px;
+    }
+}

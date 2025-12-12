@@ -38,16 +38,16 @@ const Contact: React.FC = () => {
   }
 
   return (
-    <section className="container stacked">
-      <div>
+    <section className="container contact-page">
+      <div className="contact-intro">
         <h2>Let's Talk About Your Challenge</h2>
-        <p className="muted" style={{ maxWidth: "70ch" }}>
+        <p className="muted">
           Tell me about the problem you're facing. I'll review your situation and we'll schedule a call to explore solutions together — no pressure, no obligation.
         </p>
       </div>
 
-      <div className="grid two">
-        <form className="card" onSubmit={onSubmit} noValidate>
+      <div className="contact-grid">
+        <form className="card contact-form-card contact-form" onSubmit={onSubmit} noValidate>
           <div className="stacked">
             <div>
               <h3>What's your biggest challenge?</h3>
@@ -131,7 +131,7 @@ const Contact: React.FC = () => {
                 placeholder="What's this costing you in time or money? What have you tried so far? How many people does this affect?"/>
             </label>
 
-            <hr style={{ border: 0, borderTop: "1px solid var(--border)", margin: "8px 0" }} />
+            <hr />
 
             <label>
               <span>Your name</span>
@@ -158,8 +158,8 @@ const Contact: React.FC = () => {
             <p className="muted" style={{ marginTop: 8 }}>I'll reply within 24 hours, Monday – Saturday.</p>
 
             {status && (
-              <div className="card" style={{ background: "var(--bg)", marginTop: 12 }}>
-                <p className="muted" role="status" style={{ whiteSpace: "pre-wrap", margin: 0 }}>
+              <div className="card contact-status">
+                <p className="muted" role="status">
                   {status}
                 </p>
               </div>
@@ -171,28 +171,28 @@ const Contact: React.FC = () => {
           <div className="card">
             <div className="stacked">
               <h3>What happens next?</h3>
-              <div className="stacked" style={{ gap: 16 }}>
-                <div>
-                  <p className="muted" style={{ margin: 0 }}>
+              <div className="process-steps">
+                <div className="process-step">
+                  <p className="muted process-step-title">
                     <strong>1. I'll review your situation</strong>
                   </p>
-                  <p className="muted" style={{ fontSize: "0.9rem", marginTop: 4 }}>
+                  <p className="muted process-step-description">
                     Within 24 hours, I'll send a thoughtful reply about your challenge and whether automation makes sense.
                   </p>
                 </div>
-                <div>
-                  <p className="muted" style={{ margin: 0 }}>
+                <div className="process-step">
+                  <p className="muted process-step-title">
                     <strong>2. We'll schedule a free call</strong>
                   </p>
-                  <p className="muted" style={{ fontSize: "0.9rem", marginTop: 4 }}>
+                  <p className="muted process-step-description">
                     30 minutes to dive deeper into your workflow and explore potential solutions. No sales pitch.
                   </p>
                 </div>
-                <div>
-                  <p className="muted" style={{ margin: 0 }}>
+                <div className="process-step">
+                  <p className="muted process-step-title">
                     <strong>3. I'll send you a clear proposal</strong>
                   </p>
-                  <p className="muted" style={{ fontSize: "0.9rem", marginTop: 4 }}>
+                  <p className="muted process-step-description">
                     If it's a fit, you'll get a detailed proposal with timeline, pricing, and exactly what we'll build. No surprises.
                   </p>
                 </div>
@@ -213,7 +213,7 @@ const Contact: React.FC = () => {
           <div className="card">
             <div className="stacked">
               <h3>Other ways to reach me</h3>
-              <ul style={{ margin: 0, paddingLeft: 20 }}>
+              <ul className="contact-methods">
                 <li><a href="mailto:info@tylerbuilds.net">info@tylerbuilds.net</a></li>
                 <li><a href="https://github.com/tylerbuilds-official" target="_blank" rel="noreferrer">GitHub</a></li>
                 <li><a href="https://www.linkedin.com/in/tyler-emery-15a612396/" target="_blank" rel="noreferrer">LinkedIn</a></li>

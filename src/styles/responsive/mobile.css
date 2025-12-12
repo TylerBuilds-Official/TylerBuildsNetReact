@@ -1,0 +1,166 @@
+/* ================================ */
+/* Mobile Responsive (max-width: 640px) */
+/* ================================ */
+
+@media (max-width: 640px) {
+    /* Typography adjustments */
+    h1 {
+        font-size: clamp(1.75rem, 6vw, 2.5rem);
+    }
+
+    h2 {
+        font-size: clamp(1.35rem, 4vw, 1.75rem);
+    }
+
+    h3 {
+        font-size: 1.1rem;
+    }
+
+    /* Container/Layout */
+    .container {
+        padding: 0 16px;
+    }
+
+    main.container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 24px 16px;
+        gap: 16px;
+    }
+
+    /* Grids stack on mobile */
+    .grid,
+    .grid.two {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    /* Buttons */
+    .btn {
+        padding: 12px 16px;
+        font-size: 0.95rem;
+        width: 100%; /* Full width on mobile */
+    }
+
+    .btn.primary {
+        padding: 14px 18px;
+        margin: 16px;
+    }
+
+    /* CTA groups stack */
+    .cta {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        width: 100%;
+    }
+
+    .cta-strip {
+        margin-top: -12px;
+        margin-bottom: 16px;
+    }
+
+    .cta-strip-inner {
+        flex-direction: column;
+        padding: 20px;
+        gap: 8px;
+    }
+
+    .cta .btn {
+        width: 100%;
+    }
+
+    .hero-visual {
+        margin-bottom: -24px;
+    }
+
+    /* Cards */
+    .card {
+        padding: 18px;
+    }
+
+    /* Lower container stacks */
+    .lower-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    /* Navigation adjustments */
+    .nav-links {
+        gap: 8px;
+    }
+
+    .nav-links a {
+        padding: 8px 10px;
+        font-size: 0.9rem;
+    }
+
+    /* Forms */
+    input,
+    textarea {
+        padding: 12px 14px;
+        font-size: 16px;
+    }
+
+    label {
+        font-size: 0.9rem;
+    }
+
+    .hide-mobile {
+        display: none !important;
+    }
+
+    .show-mobile {
+        display: block !important;
+    }
+
+    .stack-mobile {
+        flex-direction: column !important;
+    }
+
+    .full-width-mobile {
+        width: 100% !important;
+    }
+
+    button,
+    .btn,
+    a.btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    /* Segmented controls */
+    .segmented {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        width: 100%;
+        align-items: stretch;
+
+    }
+
+    .segmented button {
+        flex: 1;
+        min-width: 80px;
+
+    }
+
+    /* Modal adjustments */
+    .demo-modal,
+    .demo-modal-wide {
+        width: 95%;
+        max-height: 90vh;
+        border-radius: 12px;
+    }
+
+    /* Reduce animation complexity on mobile */
+    @media (prefers-reduced-motion: no-preference) {
+        * {
+            animation-duration: 1.3s !important;
+        }
+    }
+}

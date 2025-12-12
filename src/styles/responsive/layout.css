@@ -1,0 +1,96 @@
+/* ================================ */
+/* Layout Responsive Patterns       */
+/* ================================ */
+
+/* Mobile First - Base styles above, overrides below */
+
+/* Small mobile (max-width: 480px) */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 12px;
+    }
+
+    main.container {
+        padding: 20px 12px;
+    }
+
+    /* Extra tight spacing */
+    .grid {
+        gap: 12px;
+    }
+
+    /* Very small screens - ensure readability */
+    body {
+        font-size: 15px;
+    }
+
+    /* Reduce padding on cards */
+    .card {
+        padding: 16px;
+    }
+
+    /* Tighter hero */
+    .hero {
+        padding: 40px 0;
+    }
+
+    .hero-grid {
+        padding: 20px;
+        gap: 24px;
+    }
+}
+
+/* Tablet and up (min-width: 641px) */
+@media (min-width: 641px) {
+    .show-mobile {
+        display: none !important;
+    }
+}
+
+/* Tablet and up (min-width: 769px) */
+@media (min-width: 769px) {
+    .show-tablet {
+        display: none !important;
+    }
+
+    .hide-tablet {
+        display: block !important;
+    }
+}
+
+/* Desktop (min-width: 1024px) */
+@media (min-width: 1024px) {
+    .hero {
+        padding: 88px 0;
+    }
+
+    .hero-grid {
+        padding: 56px;
+    }
+
+    /* Multi-column layouts */
+    .features {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .values-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .why-me-grid,
+    .guides-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1280px) {
+    .container {
+        max-width: 1280px;
+    }
+}
+
+@media (min-width: 1536px) {
+    .container {
+        max-width: 1400px;
+    }
+}

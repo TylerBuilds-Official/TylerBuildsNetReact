@@ -1,0 +1,34 @@
+/* Forms */
+label {
+    display: grid;
+    gap: 6px;
+    margin-bottom: 10px;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    width: auto;
+    height: auto;
+    padding: 0;
+    background: transparent;
+    border: none;
+    margin-top: 6px;
+    flex-shrink: 0;
+}
+
+input:focus,
+textarea:focus {
+    border-color: var(--brand);
+}
