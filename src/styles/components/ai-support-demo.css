@@ -26,7 +26,7 @@
     align-items: center;
     align-content: center;
     text-align: center;
-    gap: 80px;
+    gap: 12px;
 }
 
 .ai-support-avatar {
@@ -334,6 +334,7 @@
 
     .ai-support-header {
         padding: 14px 18px;
+        text-align: left;
     }
 
     .ai-support-header h3 {
