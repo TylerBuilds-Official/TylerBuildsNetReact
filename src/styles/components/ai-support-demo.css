@@ -415,11 +415,11 @@
         height: 28px;
     }
 
-    .ai-support-footer-stats {
-        flex-direction: column;
-        gap: 12px;
-        align-items: flex-start;
-    }
+    /*.ai-support-footer-stats {*/
+    /*    flex-direction: column;*/
+    /*    gap: 12px;*/
+    /*    align-items: flex-start;*/
+    /*}*/
 }
 
 @media (prefers-reduced-motion: reduce) {
