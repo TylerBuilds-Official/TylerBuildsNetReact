@@ -24,7 +24,9 @@
 .ai-support-header-info {
     display: flex;
     align-items: center;
-    gap: 12px;
+    align-content: center;
+    text-align: center;
+    gap: 80px;
 }
 
 .ai-support-avatar {
@@ -62,6 +64,7 @@
 .ai-support-close {
     padding: 8px;
     min-width: auto;
+    max-width: 40px;
     border-radius: 8px;
 }
 
@@ -86,6 +89,7 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+    text-align: left;
 }
 
 .ai-support-message {
@@ -372,7 +376,8 @@
     }
 
     .ai-support-input-area {
-        padding: 14px 18px;
+        padding: 14px 14px;
+        max-height: 90px;
     }
 
     .ai-support-input {
@@ -381,7 +386,7 @@
     }
 
     .ai-support-send {
-        width: 40px;
+        max-width: 80px;
         height: 40px;
     }
 

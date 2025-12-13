@@ -46,6 +46,7 @@ const ProjectsAISupportDemo: React.FC<{ onClose: () => void }> = ({ onClose }) =
   const [isTyping, setIsTyping] = useState(false);
   const [messageCount, setMessageCount] = useState(0);
   const [error, setError] = useState<string | null>(null);
+  const [suggestionsClicked, setSuggestionsClicked] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -135,10 +136,12 @@ const ProjectsAISupportDemo: React.FC<{ onClose: () => void }> = ({ onClose }) =
   };
 
   const handleSuggestion = (question: string) => {
-    sendMessage(question);
-  };
+      setSuggestionsClicked(true);
+      sendMessage(question);
+    }
 
-  const remainingMessages = MAX_MESSAGES - messageCount;
+
+    const remainingMessages = MAX_MESSAGES - messageCount;
 
   return (
     <div className="ai-support-demo">
@@ -234,7 +237,7 @@ const ProjectsAISupportDemo: React.FC<{ onClose: () => void }> = ({ onClose }) =
         <div ref={messagesEndRef} />
       </div>
 
-      {messageCount < 2 && !isTyping && (
+      {!suggestionsClicked && messageCount < 2 && !isTyping && (
         <div className="ai-support-suggestions">
           <span className="ai-support-suggestions-label">Try asking:</span>
           <div className="ai-support-suggestions-list">

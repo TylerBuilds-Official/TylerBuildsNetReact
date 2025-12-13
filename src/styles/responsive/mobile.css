@@ -46,7 +46,7 @@
 
     .btn.primary {
         padding: 14px 18px;
-        margin: 16px;
+        margin: 16px 0;
     }
 
     /* CTA groups stack */
@@ -157,7 +157,23 @@
         border-radius: 12px;
     }
 
-    /* Reduce animation complexity on mobile */
+    .process-stepper .segmented {
+        text-align: left;
+    }
+
+    .process-stepper ~ div[role="tabpanel"] h4 {
+        text-align: center;
+    }
+
+    .process-stepper .segmented button {
+        text-align: left;
+        justify-content: flex-start;
+    }
+
+    .process-stepper + .progress-track + div[role="tabpanel"] {
+        text-align: left;
+    }
+
     @media (prefers-reduced-motion: no-preference) {
         * {
             animation-duration: 1.3s !important;

@@ -397,6 +397,11 @@
         height: 48px;
         margin-bottom: 12px;
     }
+
+    .step-badge {
+        min-width: 28px;
+        padding: 12px 16px;
+    }
 }
 
 /* Projects page responsive - Small Mobile */

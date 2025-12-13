@@ -45,22 +45,24 @@ const ProcessStepper: React.FC = () => {
 
     return (
         <div className="stacked" onKeyDown={onKeyDown}>
-            <div className="segmented wrap" role="tablist" aria-label="Project process steps">
-                {steps.map((s, i) => (
-                    <button
-                        key={s.title}
-                        type="button"
-                        role="tab"
-                        aria-selected={idx === i}
-                        className={idx === i ? "active" : ""}
-                        onClick={() => setIdx(i)}
-                        aria-controls={`step-panel-${i}`}
-                        id={`step-tab-${i}`}
-                    >
-                        <span aria-hidden="true" className="step-badge">{i + 1}</span>
-                        <span>{s.title}</span>
-                    </button>
-                ))}
+            <div className="process-stepper">
+                <div className="segmented wrap" role="tablist" aria-label="Project process steps">
+                    {steps.map((s, i) => (
+                        <button
+                            key={s.title}
+                            type="button"
+                            role="tab"
+                            aria-selected={idx === i}
+                            className={idx === i ? "active" : ""}
+                            onClick={() => setIdx(i)}
+                            aria-controls={`step-panel-${i}`}
+                            id={`step-tab-${i}`}
+                        >
+                            <span aria-hidden="true" className="step-badge">{i + 1}</span>
+                            <span>{s.title}</span>
+                        </button>
+                    ))}
+                </div>
             </div>
 
             {/* Progress line */}
