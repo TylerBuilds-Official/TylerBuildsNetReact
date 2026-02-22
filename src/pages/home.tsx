@@ -2,6 +2,7 @@ import React, { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import logoUrl from "../assets/TB_logo.png";
 import HeroVisualInteractive from "../components/HomeHeroVisualInteractive.tsx";
+import SegmentedSlider from "../components/GlobalUISegmentedSlider.tsx";
 
 const Home: React.FC = () => {
   const [focus, setFocus] = useState<"automation" | "ai">("automation");
@@ -92,39 +93,23 @@ const Home: React.FC = () => {
       </section>
 
       {/* Interactive Internal Tools mini-section */}
-      <section className="container" aria-labelledby="tools-section-heading">
+      <section aria-labelledby="tools-section-heading">
         <div className="card interactive">
           <div className="stacked">
             <div>
               <p id="tools-section-heading" className="eyebrow">What I Build</p>
               <h2>Solutions that save time and money</h2>
             </div>
-            <div className="segmented" role="tablist" aria-label="Solution examples">
-              <button
-                role="tab"
-                aria-selected={toolsTab === "dashboards"}
-                className={toolsTab === "dashboards" ? "active" : ""}
-                onClick={() => setToolsTab("dashboards")}
-              >
-                Dashboards
-              </button>
-              <button
-                role="tab"
-                aria-selected={toolsTab === "integrations"}
-                className={toolsTab === "integrations" ? "active" : ""}
-                onClick={() => setToolsTab("integrations")}
-              >
-                Integrations
-              </button>
-              <button
-                role="tab"
-                aria-selected={toolsTab === "automation"}
-                className={toolsTab === "automation" ? "active" : ""}
-                onClick={() => setToolsTab("automation")}
-              >
-                Automation
-              </button>
-            </div>
+            <SegmentedSlider
+              tabs={[
+                { key: "dashboards",    label: "Dashboards" },
+                { key: "integrations",  label: "Integrations" },
+                { key: "automation",    label: "Automation" },
+              ]}
+              active={toolsTab}
+              onSelect={(key) => setToolsTab(key as typeof toolsTab)}
+              ariaLabel="Solution examples"
+            />
 
             <div className="tool-pane fade-in" role="tabpanel" aria-live="polite">
               <h3>{toolsCopy[toolsTab].title}</h3>

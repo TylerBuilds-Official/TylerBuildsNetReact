@@ -140,13 +140,29 @@
         align-content: center;
         width: 100%;
         align-items: stretch;
-
     }
 
     .segmented button {
         flex: 1;
         min-width: 80px;
+    }
 
+    .segmented-slider {
+        flex-direction: row;
+        width: auto;
+    }
+
+    .segmented-slider.wrap {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .segmented-slider.wrap .segmented-indicator {
+        display: none;
+    }
+
+    .segmented-slider.wrap .active {
+        background: var(--brand);
     }
 
     /* Modal adjustments */
@@ -176,7 +192,7 @@
 
     @media (prefers-reduced-motion: no-preference) {
         * {
-            animation-duration: 1.3s !important;
+            animation-duration: 5s !important;
         }
     }
 }

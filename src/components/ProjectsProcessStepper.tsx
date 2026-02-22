@@ -1,6 +1,7 @@
 
 // --- Process Stepper ---
 import React, {useState} from "react";
+import SegmentedSlider from "./GlobalUISegmentedSlider.tsx";
 
 const steps = [
     {
@@ -46,23 +47,21 @@ const ProcessStepper: React.FC = () => {
     return (
         <div className="stacked" onKeyDown={onKeyDown}>
             <div className="process-stepper">
-                <div className="segmented wrap" role="tablist" aria-label="Project process steps">
-                    {steps.map((s, i) => (
-                        <button
-                            key={s.title}
-                            type="button"
-                            role="tab"
-                            aria-selected={idx === i}
-                            className={idx === i ? "active" : ""}
-                            onClick={() => setIdx(i)}
-                            aria-controls={`step-panel-${i}`}
-                            id={`step-tab-${i}`}
-                        >
-                            <span aria-hidden="true" className="step-badge">{i + 1}</span>
-                            <span>{s.title}</span>
-                        </button>
-                    ))}
-                </div>
+                <SegmentedSlider
+                    tabs={steps.map((s, i) => ({
+                        key: String(i),
+                        label: (
+                            <>
+                                <span aria-hidden="true" className="step-badge">{i + 1}</span>
+                                <span>{s.title}</span>
+                            </>
+                        ),
+                    }))}
+                    active={String(idx)}
+                    onSelect={(key) => setIdx(Number(key))}
+                    ariaLabel="Project process steps"
+                    className="wrap"
+                />
             </div>
 
             {/* Progress line */}

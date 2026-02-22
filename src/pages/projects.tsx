@@ -1,6 +1,7 @@
 import React, { useState} from "react";
 import ProcessStepper from "../components/ProjectsProcessStepper.tsx";
 import Card from "../components/GlobalUICard.tsx";
+import SegmentedSlider from "../components/GlobalUISegmentedSlider.tsx";
 import ProjectsInvSyncAutomation from "../components/ProjectsInvSyncAutomation.tsx";
 import ProjectsSalesDashboard from "../components/ProjectsSalesDashboard.tsx";
 import ProjectsAISupportDemo from "../components/ProjectsAISupportDemo.tsx";
@@ -125,32 +126,16 @@ const Projects: React.FC = () => {
       <div className="container">
         <div className="projects-filter">
           <h2>See What's Possible</h2>
-          <div className="segmented" role="tablist" aria-label="Project filter">
-            <button
-              role="tab"
-              aria-selected={filter === "all"}
-              className={filter === "all" ? "active" : ""}
-              onClick={() => setFilter("all")}
-            >
-              All Projects
-            </button>
-            <button
-              role="tab"
-              aria-selected={filter === "case-study"}
-              className={filter === "case-study" ? "active" : ""}
-              onClick={() => setFilter("case-study")}
-            >
-              Case Studies
-            </button>
-            <button
-              role="tab"
-              aria-selected={filter === "example"}
-              className={filter === "example" ? "active" : ""}
-              onClick={() => setFilter("example")}
-            >
-              What I Can Build
-            </button>
-          </div>
+          <SegmentedSlider
+            tabs={[
+              { key: "all",        label: "All Projects" },
+              { key: "case-study", label: "Case Studies" },
+              { key: "example",    label: "What I Can Build" },
+            ]}
+            active={filter}
+            onSelect={(key) => setFilter(key as typeof filter)}
+            ariaLabel="Project filter"
+          />
         </div>
       </div>
 

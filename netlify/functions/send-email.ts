@@ -1,7 +1,6 @@
+import type { Handler } from "@netlify/functions";
 
-import { Handler } from "@netlify/functions";
-
-export const handler: Handler = async (event, context) => {
+export const handler: Handler = async (event, _context) => {
     if (event.httpMethod !== "POST") {
         return { statusCode: 405, body: "Method Not Allowed" };
     }

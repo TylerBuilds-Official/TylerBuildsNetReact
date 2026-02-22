@@ -25,10 +25,10 @@
 }
 
 .brand-logo {
-    width: 28px;
+    width: auto;
     height: 28px;
     display: block;
-    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, .25));
+    filter: brightness(2.8) drop-shadow(0 2px 6px rgba(0, 0, 0, .25));
 }
 
 .nav-links {
@@ -98,7 +98,7 @@
     }
 
     .brand-logo {
-        width: 24px;
+        width: auto;
         height: 24px;
     }
 

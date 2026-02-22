@@ -13,7 +13,7 @@ export const handler: Handler = async (event) => {
 
         const response = await fetch("https://api.openai.com/v1/chat/completions", {
             method: "POST",
-            headers: { // @ts-ignore
+            headers: {
                 "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
                 "Content-Type": "application/json",
             },
