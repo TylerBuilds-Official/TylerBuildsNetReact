@@ -4,7 +4,7 @@
 
 .inv-sync-demo {
     background: var(--surface);
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -34,7 +34,7 @@
     padding: 8px;
     min-width: auto;
     max-width: 40px;
-    border-radius: 8px;
+    border-radius: var(--radius);
 }
 
 .inv-sync-content {
@@ -56,7 +56,7 @@
 .inv-sync-system {
     background: var(--bg);
     border: 1px solid var(--border);
-    border-radius: 10px;
+    border-radius: var(--radius-lg);
     overflow: hidden;
 }
 
@@ -72,7 +72,7 @@
 .inv-sync-system-icon {
     width: 40px;
     height: 40px;
-    border-radius: 10px;
+    border-radius: var(--radius-lg);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -237,7 +237,7 @@
     padding: 12px 20px;
     background: var(--bg);
     border: 1px solid var(--border);
-    border-radius: 10px;
+    border-radius: var(--radius-lg);
     min-width: 100px;
 }
 
@@ -262,7 +262,7 @@
 .inv-sync-log {
     background: #0a0c0f;
     border: 1px solid var(--border);
-    border-radius: 10px;
+    border-radius: var(--radius-lg);
     overflow: hidden;
     font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
     font-size: 0.75rem;

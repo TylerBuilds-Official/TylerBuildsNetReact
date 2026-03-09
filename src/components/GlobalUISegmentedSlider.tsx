@@ -33,8 +33,17 @@ const SegmentedSlider: React.FC<SegmentedSliderProps> = ({ tabs, active, onSelec
   }, [active, updateIndicator]);
 
   useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const ro = new ResizeObserver(() => updateIndicator());
+    ro.observe(container);
+
     window.addEventListener("resize", updateIndicator);
-    return () => window.removeEventListener("resize", updateIndicator);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", updateIndicator);
+    };
   }, [updateIndicator]);
 
   return (

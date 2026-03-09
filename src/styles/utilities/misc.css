@@ -5,8 +5,7 @@
     gap: 4px;
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 12px;
-    justify-content: space-evenly;
+    border-radius: var(--radius);
     align-items: center;
 }
 
@@ -16,7 +15,7 @@
     background: transparent;
     color: var(--muted);
     padding: 8px 12px;
-    border-radius: 12px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
     font-weight: 600;
     font-size: 0.95rem;
@@ -29,8 +28,9 @@
 }
 
 .segmented .active {
-    background: var(--brand);
+    background: linear-gradient(180deg, #6db8ff 0%, var(--brand) 100%);
     color: var(--brand-contrast);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .12) inset;
 }
 
 .segmented .active:hover {
@@ -45,14 +45,16 @@
 .segmented-slider .active {
     background: transparent;
     color: var(--brand-contrast);
+    box-shadow: none;
 }
 
 .segmented-indicator {
     position: absolute;
     top: 4px;
     height: calc(100% - 8px);
-    background: var(--brand);
-    border-radius: 12px;
+    background: linear-gradient(180deg, #6db8ff 0%, var(--brand) 100%);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .12) inset;
     transition: left .3s cubic-bezier(.4, 0, .2, 1), width .3s cubic-bezier(.4, 0, .2, 1);
     pointer-events: none;
     z-index: 0;
@@ -77,7 +79,7 @@
 /* Fieldset reset/utilities */
 .fieldset {
     border: 1px solid var(--border);
-    border-radius: 16px;
+    border-radius: var(--radius-lg);
     padding: 12px;
 }
 
@@ -89,7 +91,7 @@
 .step-badge {
     width: 20px;
     height: 20px;
-    border-radius: 12px;
+    border-radius: var(--radius);
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -98,6 +100,7 @@
     font-size: 12px;
     font-weight: 700;
     margin-right: 8px;
+    padding-top: 2px;
     transition: background .2s ease, color .2s ease;
 }
 
@@ -149,6 +152,18 @@
     border-radius: 50%;
     background: #22c55e;
     box-shadow: 0 0 0 3px rgba(34, 197, 94, .18);
+    animation: breathe 3s ease-in-out infinite;
+}
+
+@keyframes breathe {
+    0%, 100% {
+        box-shadow: 0 0 0 3px rgba(34, 197, 94, .18);
+        opacity: 1;
+    }
+    50% {
+        box-shadow: 0 0 0 6px rgba(34, 197, 94, .08);
+        opacity: .7;
+    }
 }
 
 .tags {
@@ -172,7 +187,7 @@
 /* Interactive section */
 .interactive .segmented {
     align-self: start;
-    max-width: 560px;
+    justify-self: start;
 }
 
 .interactive {
@@ -226,7 +241,7 @@
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
     border-right: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius);
     padding: 0 20px;
     margin-bottom: -16px;
 }
@@ -235,7 +250,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 28px;
+    padding: 16px 28px;
 }
 
 /* Charts */
@@ -333,12 +348,11 @@
 .demo-modal {
     max-width: 800px;
     width: 90%;
-    max-height: 80vh;
-    overflow: auto;
+    max-height: 85vh;
 }
 
 .demo-modal-wide {
-    max-width: 900px;
+    max-width: 1000px;
     width: 95%;
 }
 
@@ -347,7 +361,7 @@
     .cta-strip-inner {
         flex-direction: column;
         align-items: center;
-        padding-bottom: 16px;
+        padding: 12px 16px;
         text-align: center;
     }
 

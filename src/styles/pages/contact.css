@@ -6,6 +6,18 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
+    position: relative;
+}
+
+.contact-page::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(650px 325px at 40% 20%, rgba(90, 169, 255, .08), transparent 55%),
+        radial-gradient(500px 250px at 65% 70%, rgba(90, 169, 255, .05), transparent 50%);
+    z-index: 0;
 }
 
 .contact-intro {
@@ -25,17 +37,41 @@
 
 /* Form specific styling */
 .contact-form .stacked {
-    align-items: stretch; /* Override any centering for form layout */
+    align-items: stretch;
 }
 
 .contact-form .fieldset {
     margin: 4px 0;
+    background: var(--bg);
+    padding: 16px;
+}
+
+.contact-form .fieldset .legend-pad {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--brand);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
 }
 
 .contact-form label.row {
     margin: 0;
     cursor: pointer;
-    padding: 4px 0;
+    padding: 8px 10px;
+    border-radius: var(--radius-sm);
+    transition: background .15s ease;
+    font-size: 0.92rem;
+    color: var(--muted);
+}
+
+.contact-form label.row:hover {
+    background: rgba(90, 169, 255, .06);
+    color: var(--text);
+}
+
+.contact-form label.row:has(input:checked) {
+    background: rgba(90, 169, 255, .1);
+    color: var(--text);
 }
 
 .contact-form hr {

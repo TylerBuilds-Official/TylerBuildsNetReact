@@ -6,6 +6,18 @@
     display: flex;
     flex-direction: column;
     gap: 48px;
+    position: relative;
+}
+
+.guides-page::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(750px 375px at 70% 10%, rgba(90, 169, 255, .09), transparent 55%),
+        radial-gradient(500px 250px at 25% 65%, rgba(90, 169, 255, .05), transparent 50%);
+    z-index: 0;
 }
 
 /* Guides Hero */
@@ -14,15 +26,7 @@
     padding: 40px 0 20px;
 }
 
-.guides-hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background:
-        radial-gradient(600px 300px at 20% 50%, rgba(90, 169, 255, .1), transparent 60%),
-        radial-gradient(400px 200px at 80% 30%, rgba(90, 169, 255, .06), transparent 50%);
-}
+
 
 .guides-hero-content {
     position: relative;
@@ -59,7 +63,7 @@
 .guide-card {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     padding: 28px;
     box-shadow: var(--shadow);
     transition: transform .2s ease, box-shadow .2s ease;
@@ -101,7 +105,7 @@
     justify-content: center;
     width: 52px;
     height: 52px;
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     background: linear-gradient(135deg, rgba(90, 169, 255, .15), rgba(90, 169, 255, .05));
     color: var(--brand);
     transition: transform .2s ease, background .2s ease;
@@ -200,7 +204,7 @@
     pointer-events: none;
     background:
         radial-gradient(500px 250px at 70% 50%, rgba(90, 169, 255, .06), transparent 60%);
-    border-radius: 24px;
+    border-radius: var(--radius-lg);
     z-index: -1;
 }
 
@@ -233,7 +237,7 @@
 .faq-item {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     overflow: hidden;
     transition: border-color .2s ease, box-shadow .2s ease;
 }

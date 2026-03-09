@@ -1,7 +1,6 @@
-import React, { useState} from "react";
+import React, { useState, useEffect } from "react";
 import ProcessStepper from "../components/ProjectsProcessStepper.tsx";
 import Card from "../components/GlobalUICard.tsx";
-import SegmentedSlider from "../components/GlobalUISegmentedSlider.tsx";
 import ProjectsInvSyncAutomation from "../components/ProjectsInvSyncAutomation.tsx";
 import ProjectsSalesDashboard from "../components/ProjectsSalesDashboard.tsx";
 import ProjectsAISupportDemo from "../components/ProjectsAISupportDemo.tsx";
@@ -13,7 +12,7 @@ type Project = {
   title: string;
   description: string;
   outcome: string;
-  type: "case-study" | "example";
+  type: "shipped" | "demo";
   tags: string[];
   heroMetric?: {
     value: number;
@@ -27,9 +26,9 @@ const projects: Project[] = [
   {
     id: "inventory-sync",
     title: "Inventory Sync Automation",
-    description: "A mid-sized manufacturer was manually copying inventory data between their warehouse system and accounting software every day — about 2 hours of tedious work.",
+    description: "A mid-sized manufacturer was manually copying inventory data between their warehouse system and accounting software every day, about 2 hours of tedious work.",
     outcome: "Built a custom integration that syncs inventory automatically every hour. Eliminated manual data entry and reduced billing errors by 95%.",
-    type: "case-study",
+    type: "demo",
     tags: ["Error Reduction", "Auto-Sync", "Real-Time"],
     heroMetric: { value: 10, suffix: "hrs/week", label: "Time Saved" },
     hasDemo: true,
@@ -39,64 +38,66 @@ const projects: Project[] = [
     title: "Real-Time Sales Dashboard",
     description: "Leadership team was waiting until end of week to see sales performance. No visibility into daily trends or problem accounts.",
     outcome: "Created a live dashboard pulling from their CRM and payment processor. Now they spot issues immediately and make faster decisions.",
-    type: "case-study",
+    type: "demo",
     tags: ["Real-Time Data", "Better Decisions", "Mobile Access"],
     heroMetric: { value: 100, suffix: "%", label: "Visibility" },
     hasDemo: true,
   },
   {
-    id: "approval-workflow",
-    title: "Automated Approval System",
-    description: "Purchase requests were sitting in email inboxes for days. No tracking, no accountability, lots of duplicated work.",
-    outcome: "Built a workflow tool with instant notifications and approval tracking. Reduced approval time from 3 days to 4 hours.",
-    type: "case-study",
-    tags: ["Accountability", "Notifications", "Tracking"],
-    heroMetric: { value: 4, suffix: "x", label: "Faster Approvals" },
+    id: "enterprise-ai",
+    title: "Enterprise AI Platform",
+    description: "A manufacturing company had critical data scattered across disconnected systems. Getting answers meant manual reports, IT requests, and hours of waiting.",
+    outcome: "Built a custom AI platform that gives managers instant, conversational access to operational data. Questions that took hours of manual reporting now return in seconds.",
+    type: "shipped",
+    tags: ["AI-Powered", "Instant Answers", "Time Savings"],
+    heroMetric: { value: 30, suffix: "+", label: "Custom AI Tools" },
   },
   {
     id: "ai-support",
     title: "AI Customer Support Assistant",
     description: "Your support team answers the same questions hundreds of times per month. Customers wait hours for simple answers.",
     outcome: "An AI chatbot trained on your help docs and past tickets. Handles 70% of common questions instantly, freeing your team for complex issues.",
-    type: "example",
+    type: "demo",
     tags: ["AI-Powered", "24/7 Availability", "Scalable"],
     heroMetric: { value: 70, suffix: "%", label: "Auto-Resolved" },
     hasDemo: true,
   },
   {
-    id: "report-automation",
-    title: "Automated Weekly Reports",
-    description: "Someone on your team spends 3 hours every Friday pulling data, making charts, and formatting reports.",
-    outcome: "A system that generates your reports automatically. Clean charts, consistent format, delivered to your inbox every Friday morning.",
-    type: "example",
-    tags: ["Consistent", "Automatic", "Scheduled"],
-    heroMetric: { value: 3, suffix: "hrs", label: "Saved Weekly" },
+    id: "document-classification",
+    title: "AI Document Classification",
+    description: "Hundreds of documents per project needed to be sorted by type, manually. Coordinators spent hours per project on sorting and misfiled documents caused costly delays.",
+    outcome: "Built an AI classification system that automatically identifies, sorts, and organizes documents by type. Processing time dropped from hours to minutes per project.",
+    type: "shipped",
+    tags: ["AI Classification", "Time Savings", "Error Reduction"],
+    heroMetric: { value: 1000, suffix: "s", label: "Pages Processed" },
   },
   {
-    id: "onboarding-portal",
-    title: "Customer Onboarding Portal",
-    description: "New customers email back-and-forth for account setup, document uploads, and initial configuration. Slow and error-prone.",
-    outcome: "A guided portal that walks customers through setup step-by-step. Faster onboarding, happier customers, fewer support tickets.",
-    type: "example",
-    tags: ["Better Experience", "Self-Service", "Guided"],
-    heroMetric: { value: 50, suffix: "%", label: "Faster Onboarding" },
+    id: "quality-control",
+    title: "Automated Quality Control",
+    description: "Staff had to manually cross-reference documents against production data to make critical decisions. Mistakes from misread documents meant wasted materials and money.",
+    outcome: "Built an automated system that pulls production data, cross-references it against source documents, and makes accurate decisions instantly. Eliminated costly material waste from human error.",
+    type: "shipped",
+    tags: ["Error Elimination", "Cost Savings", "Automated Decisions"],
+    heroMetric: { value: 100, suffix: "%", label: "Waste Eliminated" },
   },
 ];
 
 const Projects: React.FC = () => {
   const [selectedDemo, setSelectedDemo] = useState<string | null>(null);
-  const [filter, setFilter] = useState<"all" | "case-study" | "example">("all");
 
-  const filteredProjects = projects.filter(p => filter === "all" || p.type === filter);
+  useEffect(() => {
+    document.body.style.overflow = selectedDemo ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [selectedDemo]);
 
   return (
     <section className="projects-page">
       {/* Header */}
       <div className="container">
         <div className="projects-header">
-          <h1>Projects & Examples</h1>
+          <h1>Projects</h1>
           <p className="muted">
-            Real results from real clients, plus examples of what I can build for your business
+            Real results from real work, plus interactive demos you can try
           </p>
         </div>
       </div>
@@ -107,7 +108,7 @@ const Projects: React.FC = () => {
           <Card>
             <div className="stacked" style={{ textAlign: "center" }}>
               <div>
-                <p className="eyebrow" style={{ color: "var(--brand)" }}>The Process</p>
+                <p className="eyebrow process-eyebrow" style={{ color: "var(--brand)" }}>The Process</p>
                 <h2 style={{ marginTop: "8px" }}>Here's exactly how we'll work together</h2>
                 <p className="muted" style={{ maxWidth: "600px", margin: "0 auto" }}>
                   No surprises, no confusion. Just a clear path from your challenge to a working solution.
@@ -122,27 +123,10 @@ const Projects: React.FC = () => {
         </div>
       </div>
 
-      {/* Filter */}
-      <div className="container">
-        <div className="projects-filter">
-          <h2>See What's Possible</h2>
-          <SegmentedSlider
-            tabs={[
-              { key: "all",        label: "All Projects" },
-              { key: "case-study", label: "Case Studies" },
-              { key: "example",    label: "What I Can Build" },
-            ]}
-            active={filter}
-            onSelect={(key) => setFilter(key as typeof filter)}
-            ariaLabel="Project filter"
-          />
-        </div>
-      </div>
-
       {/* Projects grid */}
       <div className="container">
         <div className="projects-grid">
-          {filteredProjects.map((p) => (
+          {projects.map((p) => (
             <article 
               key={p.id} 
               className={`project-card-enhanced ${p.type}`}
@@ -160,24 +144,19 @@ const Projects: React.FC = () => {
               <div className="project-card-content">
                 <div className="project-card-header">
                   <span className={`project-type-badge ${p.type}`}>
-                    {p.type === "case-study" ? (
+                    {p.hasDemo ? (
                       <>
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                          <polyline points="14 2 14 8 20 8"></polyline>
-                          <line x1="16" y1="13" x2="8" y2="13"></line>
-                          <line x1="16" y1="17" x2="8" y2="17"></line>
+                          <polygon points="5 3 19 12 5 21 5 3"></polygon>
                         </svg>
-                        Case Study
+                        Interactive Demo
                       </>
                     ) : (
                       <>
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                          <polyline points="2 17 12 22 22 17"></polyline>
-                          <polyline points="2 12 12 17 22 12"></polyline>
+                          <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>
-                        Example
+                        Shipped
                       </>
                     )}
                   </span>
@@ -286,7 +265,7 @@ const Projects: React.FC = () => {
                 </svg>
               </div>
               <h4>We iterate until it's right</h4>
-              <p>Your feedback shapes the final product. No "take it or leave it" deliveries — we refine together until it solves your problem perfectly.</p>
+              <p>Your feedback shapes the final product. No "take it or leave it" deliveries. We refine together until it solves your problem perfectly.</p>
             </article>
 
             <article className="why-me-card">
@@ -301,6 +280,18 @@ const Projects: React.FC = () => {
             </article>
           </div>
         </section>
+      </div>
+
+      {/* Portfolio Link */}
+      <div className="container">
+        <Card>
+          <div className="portfolio-callout">
+            <p className="eyebrow" style={{ color: "var(--brand)" }}>Full Portfolio</p>
+            <h3>Want to see the full technical breakdown?</h3>
+            <p className="muted">Detailed case studies, architecture details, and the complete project list.</p>
+            <a href="https://portfolio.tylerbuilds.net" className="btn primary" target="_blank" rel="noreferrer">View Developer Portfolio</a>
+          </div>
+        </Card>
       </div>
 
       {/* CTA Strip */}

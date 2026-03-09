@@ -81,7 +81,7 @@ const Contact: React.FC = () => {
       <div className="contact-intro">
         <h2>Let's Talk About Your Challenge</h2>
         <p className="muted">
-          Tell me about the problem you're facing. I'll review your situation and we'll schedule a call to explore solutions together — no pressure, no obligation.
+          Tell me about the problem you're facing. I'll review your situation and we'll schedule a call to explore solutions together. No pressure, no obligation.
         </p>
       </div>
 
@@ -244,7 +244,7 @@ const Contact: React.FC = () => {
           <div className="card">
             <div className="stacked">
               <h3>Or book a call directly</h3>
-              <p className="muted">Prefer to talk first? No problem — grab a time that works for you.</p>
+              <p className="muted">Prefer to talk first? No problem, grab a time that works for you.</p>
               <a className="btn primary" href={CALENDAR_URL} target="_blank" rel="noreferrer">
                 Schedule Free 30-Minute Call
               </a>
@@ -256,6 +256,7 @@ const Contact: React.FC = () => {
               <h3>Other ways to reach me</h3>
               <ul className="contact-methods">
                 <li><a href="mailto:info@tylerbuilds.net">info@tylerbuilds.net</a></li>
+                <li><a href="https://portfolio.tylerbuilds.net" target="_blank" rel="noreferrer">Developer Portfolio</a></li>
                 <li><a href="https://github.com/tylerbuilds-official" target="_blank" rel="noreferrer">GitHub</a></li>
                 <li><a href="https://www.linkedin.com/in/tyler-emery-15a612396/" target="_blank" rel="noreferrer">LinkedIn</a></li>
               </ul>

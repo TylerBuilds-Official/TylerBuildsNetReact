@@ -7,6 +7,18 @@
     flex-direction: column;
     gap: 48px;
     padding-bottom: 0;
+    position: relative;
+}
+
+.projects-page::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(800px 400px at 80% 15%, rgba(90, 169, 255, .08), transparent 55%),
+        radial-gradient(600px 300px at 15% 50%, rgba(90, 169, 255, .06), transparent 50%);
+    z-index: 0;
 }
 
 .projects-header {
@@ -38,7 +50,7 @@
     background:
         radial-gradient(600px 300px at 30% 50%, rgba(90, 169, 255, .08), transparent 60%),
         radial-gradient(400px 200px at 70% 30%, rgba(90, 169, 255, .05), transparent 50%);
-    border-radius: 24px;
+    border-radius: var(--radius-lg);
     z-index: -1;
 }
 
@@ -65,11 +77,13 @@
 .project-card-enhanced {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: var(--shadow);
     transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Left accent border by type */
@@ -83,11 +97,11 @@
     transition: width .2s ease;
 }
 
-.project-card-enhanced.case-study::before {
+.project-card-enhanced.shipped::before {
     background: linear-gradient(180deg, var(--brand), rgba(90, 169, 255, .3));
 }
 
-.project-card-enhanced.example::before {
+.project-card-enhanced.demo::before {
     background: linear-gradient(180deg, #22c55e, rgba(34, 197, 94, .3));
 }
 
@@ -96,12 +110,12 @@
     box-shadow: 0 16px 40px rgba(0, 0, 0, .3);
 }
 
-.project-card-enhanced.case-study:hover {
+.project-card-enhanced.shipped:hover {
     border-color: rgba(90, 169, 255, .4);
     box-shadow: 0 16px 40px rgba(0, 0, 0, .3), 0 0 30px rgba(90, 169, 255, .1);
 }
 
-.project-card-enhanced.example:hover {
+.project-card-enhanced.demo:hover {
     border-color: rgba(34, 197, 94, .4);
     box-shadow: 0 16px 40px rgba(0, 0, 0, .3), 0 0 30px rgba(34, 197, 94, .1);
 }
@@ -128,11 +142,11 @@
     line-height: 1;
 }
 
-.case-study .hero-metric-number {
+.shipped .hero-metric-number {
     color: var(--brand);
 }
 
-.example .hero-metric-number {
+.demo .hero-metric-number {
     color: #22c55e;
 }
 
@@ -142,11 +156,11 @@
     opacity: 0.8;
 }
 
-.case-study .hero-metric-suffix {
+.shipped .hero-metric-suffix {
     color: var(--brand);
 }
 
-.example .hero-metric-suffix {
+.demo .hero-metric-suffix {
     color: #22c55e;
 }
 
@@ -166,6 +180,7 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+    flex: 1;
 }
 
 .project-card-header h3 {
@@ -183,15 +198,15 @@
     text-transform: uppercase;
     letter-spacing: 0.08em;
     padding: 5px 10px;
-    border-radius: 6px;
+    border-radius: var(--radius);
 }
 
-.project-type-badge.case-study {
+.project-type-badge.shipped {
     color: var(--brand);
     background: rgba(90, 169, 255, 0.1);
 }
 
-.project-type-badge.example {
+.project-type-badge.demo {
     color: #22c55e;
     background: rgba(34, 197, 94, 0.1);
 }
@@ -229,7 +244,8 @@
 }
 
 .project-demo-btn {
-    align-self: flex-start;
+    width: 100%;
+    margin-top: auto;
 }
 
 /* Why Me Section */
@@ -246,7 +262,7 @@
     background:
         radial-gradient(500px 250px at 70% 40%, rgba(90, 169, 255, .07), transparent 60%),
         radial-gradient(400px 200px at 20% 60%, rgba(34, 197, 94, .05), transparent 50%);
-    border-radius: 24px;
+    border-radius: var(--radius-lg);
     z-index: -1;
 }
 
@@ -276,7 +292,7 @@
 .why-me-card {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     padding: 28px;
     box-shadow: var(--shadow);
     transition: transform .2s ease, box-shadow .2s ease;
@@ -294,7 +310,7 @@
     justify-content: center;
     width: 56px;
     height: 56px;
-    border-radius: 14px;
+    border-radius: var(--radius-lg);
     background: linear-gradient(135deg, rgba(90, 169, 255, .15), rgba(90, 169, 255, .05));
     color: var(--brand);
     margin-bottom: 16px;
@@ -402,6 +418,32 @@
         min-width: 28px;
         padding: 12px 16px;
     }
+}
+
+/* Portfolio callout */
+.portfolio-callout {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.process-eyebrow,
+.portfolio-callout .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.portfolio-callout .muted {
+    max-width: 480px;
+}
+
+.portfolio-callout .btn {
+    margin-top: 8px;
 }
 
 /* Projects page responsive - Small Mobile */

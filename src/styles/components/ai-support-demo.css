@@ -4,12 +4,12 @@
 
 .ai-support-demo {
     background: var(--surface);
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    height: 600px;
-    max-height: 85vh;
+    height: 750px;
+    max-height: 90vh;
 }
 
 .ai-support-header {
@@ -32,7 +32,7 @@
 .ai-support-avatar {
     width: 44px;
     height: 44px;
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     background: linear-gradient(135deg, rgba(90, 169, 255, .2), rgba(139, 92, 246, .2));
     color: var(--brand);
     display: flex;
@@ -65,7 +65,7 @@
     padding: 8px;
     min-width: auto;
     max-width: 40px;
-    border-radius: 8px;
+    border-radius: var(--radius);
 }
 
 /* Demo Banner */
@@ -118,7 +118,7 @@
 .ai-support-message-avatar {
     width: 32px;
     height: 32px;
-    border-radius: 8px;
+    border-radius: var(--radius);
     background: linear-gradient(135deg, rgba(90, 169, 255, .15), rgba(139, 92, 246, .15));
     color: var(--brand);
     display: flex;
@@ -130,7 +130,7 @@
 .ai-support-message-content {
     background: var(--bg);
     border: 1px solid var(--border);
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     padding: 12px 16px;
 }
 
@@ -199,7 +199,7 @@
     padding: 12px 16px;
     background: rgba(248, 113, 113, .1);
     border: 1px solid rgba(248, 113, 113, .3);
-    border-radius: 10px;
+    border-radius: var(--radius-lg);
     color: #f87171;
     font-size: 0.85rem;
 }

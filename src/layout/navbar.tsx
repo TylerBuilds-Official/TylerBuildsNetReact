@@ -13,7 +13,7 @@ const Navbar: React.FC = () => {
       <div className="container nav-inner">
         <Link to="/" className="brand" aria-label="Tyler Builds home">
           <img className="brand-logo" src={logoUrl} alt="" aria-hidden="true" />
-          <span>Tyler Builds</span>
+          <span>TylerBuilds</span>
         </Link>
 
         {/* Hamburger button - only visible on mobile */}

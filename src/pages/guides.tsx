@@ -10,7 +10,7 @@ const guides = [
     title: "5 signs your business needs automation",
     intro: "If any of these sound familiar, automation could save you significant time and money:",
     items: [
-      { label: "Manual data entry", desc: "Your team copies information between systems daily — inventory, orders, customer data, or reports." },
+      { label: "Manual data entry", desc: "Your team copies information between systems daily: inventory, orders, customer data, or reports." },
       { label: "Waiting on reports", desc: "You spend hours each week pulling data from different places to create status reports or dashboards." },
       { label: "Repetitive customer questions", desc: "Your support team answers the same questions over and over, slowing response times." },
       { label: "Approval bottlenecks", desc: "Purchase requests, time off, or project approvals sit in email for days with no tracking." },
@@ -30,7 +30,7 @@ const guides = [
     intro: "Custom automation is an investment that typically pays back within months through time savings and error reduction:",
     items: [
       { label: "Calculate your cost", desc: "If automation saves 10 hours per week at $50/hour loaded cost, that's $26,000/year in recovered time." },
-      { label: "Factor in errors", desc: "Manual processes lead to mistakes — wrong inventory counts, billing errors, missed follow-ups. These cost money to fix." },
+      { label: "Factor in errors", desc: "Manual processes lead to mistakes: wrong inventory counts, billing errors, missed follow-ups. These cost money to fix." },
       { label: "Consider opportunity cost", desc: "What could your team accomplish with 10+ extra hours per week? New customers? Product improvements?" },
       { label: "Break-even timeline", desc: "Most automation projects in the $3-8k range pay for themselves in 3-6 months through time savings alone." },
     ],
@@ -54,7 +54,7 @@ const guides = [
       { label: "Refinement (Final week)", desc: "We polish everything based on real-world testing. Training if needed." },
       { label: "Launch & support", desc: "Deploy smoothly with monitoring. I'm available for questions and ongoing improvements." },
     ],
-    outro: "You work directly with me throughout — no handoffs to junior developers or account managers.",
+    outro: "You work directly with me throughout. No handoffs to junior developers or account managers.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
@@ -68,7 +68,7 @@ const guides = [
     intro: "Here are examples of problems I've solved for businesses like yours:",
     items: [
       { label: "Inventory sync", desc: "Automatically keep warehouse, accounting, and e-commerce systems in sync. No more manual updates or inventory mismatches." },
-      { label: "Automated reporting", desc: "Generate weekly/monthly reports automatically with charts and insights — delivered to your inbox or dashboard." },
+      { label: "Automated reporting", desc: "Generate weekly/monthly reports automatically with charts and insights, delivered to your inbox or dashboard." },
       { label: "Customer onboarding portal", desc: "Self-service setup for new customers with document upload, e-signatures, and automatic notifications." },
       { label: "AI support assistant", desc: "Chatbot trained on your help docs that answers common questions 24/7, reducing support load." },
       { label: "Approval workflows", desc: "Track purchase requests, PTO, or project approvals with notifications and clear audit trails." },
@@ -97,7 +97,7 @@ const faqs = [
   },
   {
     question: "Do you offer ongoing support?",
-    answer: "Yes — after launch, I'm available for updates, adjustments, and ongoing maintenance. You can work with me on a monthly retainer or as-needed basis. Most clients appreciate having someone who knows their system when they need changes.",
+    answer: "Yes. After launch, I'm available for updates, adjustments, and ongoing maintenance. You can work with me on a monthly retainer or as-needed basis. Most clients appreciate having someone who knows their system when they need changes.",
   },
   {
     question: "What if I'm not sure what I need?",
@@ -121,7 +121,7 @@ const Guides: React.FC = () => {
             <p className="eyebrow">Guides</p>
             <h1>Is automation right for your business?</h1>
             <p className="subtitle">
-              Practical guidance to help you decide if custom automation makes sense — and what to expect when working together.
+              Practical guidance to help you decide if custom automation makes sense, and what to expect when working together.
             </p>
           </div>
         </div>

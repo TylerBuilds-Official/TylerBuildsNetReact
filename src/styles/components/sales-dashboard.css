@@ -4,11 +4,11 @@
 
 .sales-dashboard-demo {
     background: var(--surface);
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    max-height: 90vh;
+    max-height: 85vh;
 }
 
 .dashboard-header {
@@ -34,15 +34,17 @@
     padding: 8px;
     min-width: auto;
     max-width: 40px;
-    border-radius: 8px;
+    border-radius: var(--radius);
 }
 
 .dashboard-content {
-    padding: 20px 24px;
+    padding: 16px 24px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 14px;
     overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
 }
 
 /* Data Sources */
@@ -69,7 +71,7 @@
 .dashboard-source {
     background: var(--bg);
     border: 1px solid var(--border);
-    border-radius: 10px;
+    border-radius: var(--radius-lg);
     padding: 14px;
     position: relative;
     overflow: hidden;
@@ -90,7 +92,7 @@
 .dashboard-source-icon {
     width: 36px;
     height: 36px;
-    border-radius: 8px;
+    border-radius: var(--radius);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -185,7 +187,7 @@
 .dashboard-kpi {
     background: var(--bg);
     border: 1px solid var(--border);
-    border-radius: 10px;
+    border-radius: var(--radius-lg);
     padding: 14px;
     display: flex;
     flex-direction: column;
@@ -225,7 +227,7 @@
 .dashboard-chart-section {
     background: var(--bg);
     border: 1px solid var(--border);
-    border-radius: 10px;
+    border-radius: var(--radius-lg);
     padding: 16px;
 }
 
@@ -246,7 +248,7 @@
 }
 
 .dashboard-chart {
-    height: 160px;
+    height: 130px;
 }
 
 .dashboard-chart-bars {
@@ -272,7 +274,7 @@
     width: 100%;
     max-width: 48px;
     background: linear-gradient(180deg, var(--brand), rgba(90, 169, 255, .6));
-    border-radius: 6px 6px 0 0;
+    border-radius: var(--radius) var(--radius) 0 0;
     position: absolute;
     bottom: 24px;
     transition: height 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -331,7 +333,7 @@
     padding: 12px 14px;
     background: var(--bg);
     border: 1px solid var(--border);
-    border-radius: 10px;
+    border-radius: var(--radius-lg);
     animation: slideIn 0.3s ease;
 }
 
@@ -406,7 +408,7 @@
     padding: 4px;
     color: var(--muted);
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     transition: color .15s ease, background .15s ease;
 }
 

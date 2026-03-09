@@ -234,7 +234,7 @@ const ProjectsSalesDashboard: React.FC<{ onClose: () => void }> = ({ onClose }) 
         setAlerts((prev) => [
           { ...alert, id: Date.now(), time: getTimestamp() },
           ...prev,
-        ].slice(0, 3));
+        ].slice(0, 2));
         alertIndex.current++;
       }
     };

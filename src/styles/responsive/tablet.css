@@ -19,7 +19,7 @@
     .hero-grid {
         grid-template-columns: 1fr;
         gap: 32px;
-        padding: 32px;
+        padding: 16px 0;
     }
 
     /* Features grid */
@@ -80,8 +80,7 @@
 
     .cta-strip-inner {
         flex-direction: column;
-        padding: 20px;
-
+        padding: 14px 20px;
     }
 
 

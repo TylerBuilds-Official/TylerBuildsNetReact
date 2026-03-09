@@ -4,11 +4,11 @@ import {Link} from "react-router-dom";
 const terminalLines = [
   { prompt: "$ tyler --skills", delay: 0 },
   { text: "├── languages:   ", values: "TypeScript, JavaScript, Python, C#, .NET, SQL, Bash", delay: 400 },
-  { text: "├── frontend:    ", values: "React, Vite, Tailwind, HTML/CSS, Accessibility", delay: 800 },
-  { text: "├── backend:     ", values: "Node.js, Express, REST APIs", delay: 1200 },
-  { text: "├── databases:   ", values: "PostgreSQL, MySQL, MariaDB, Prisma", delay: 1600 },
-  { text: "├── devops:      ", values: "Docker, CI/CD, Git, Linux, Nginx", delay: 2000 },
-  { text: "└── cloud:       ", values: "AWS, Vercel, Cloudflare", delay: 2400 },
+  { text: "├── frontend:    ", values: "React, Vite, XAML/WPF, HTML/CSS, Accessibility", delay: 800 },
+  { text: "├── backend:     ", values: "Python, FastAPI, Node.js, REST APIs", delay: 1200 },
+  { text: "├── databases:   ", values: "MySQL, MSSQL, PostgreSQL", delay: 1600 },
+  { text: "├── devops:      ", values: "Docker, CI/CD, Git, Linux", delay: 2000 },
+  { text: "└── cloud:       ", values: "Azure, AWS, Cloudflare", delay: 2400 },
 ];
 
 const TerminalSkills: React.FC = () => {
@@ -106,7 +106,7 @@ const About: React.FC = () => {
             <p className="eyebrow">About Me</p>
             <h1>From Steel to Software</h1>
             <p className="subtitle">
-              I'm Tyler — a developer, builder, and problem-solver based in Spokane, WA. 
+              I'm Tyler, a developer, builder, and problem-solver based in Spokane, WA. 
               My path into software is a little different: I spent years in construction 
               and fabrication, where reliability and precision aren't optional.
             </p>
@@ -144,13 +144,19 @@ const About: React.FC = () => {
         <div className="card">
           <h2>What I Do</h2>
           <p>
-            I help small businesses and teams ship fast, tidy web experiences and lightweight 
-            internal tools — without the bloat. From front-end UX to back-end services and 
-            deployments, I ship reliable, maintainable software that helps teams move faster.
+            I help businesses ship custom software that solves real problems. Full-stack 
+            applications, automation tooling, database engineering, AI platforms, desktop 
+            apps. From front-end UX to back-end services and deployments, I own the 
+            entire stack.
           </p>
           <p className="muted">
             If it reduces friction for your customers or saves your team time, I'm interested.
           </p>
+          <div style={{ marginTop: "12px" }}>
+            <a href="https://portfolio.tylerbuilds.net" className="btn primary" target="_blank" rel="noreferrer">
+              See My Full Portfolio
+            </a>
+          </div>
         </div>
       </section>
 

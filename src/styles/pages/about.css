@@ -9,12 +9,13 @@
 
 .about-hero::before {
     content: "";
-    position: absolute;
+    position: fixed;
     inset: 0;
     pointer-events: none;
     background:
-        radial-gradient(600px 300px at 20% 30%, rgba(90, 169, 255, .1), transparent 60%),
-        radial-gradient(400px 200px at 80% 60%, rgba(90, 169, 255, .06), transparent 50%);
+        radial-gradient(700px 350px at 20% 30%, rgba(90, 169, 255, .09), transparent 55%),
+        radial-gradient(600px 300px at 75% 60%, rgba(90, 169, 255, .05), transparent 50%);
+    z-index: 0;
 }
 
 .about-hero-grid {
@@ -45,7 +46,7 @@
 .stats-card {
     background: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, 0));
     border: 1px solid var(--border);
-    border-radius: 16px;
+    border-radius: var(--radius-lg);
     padding: 28px 32px;
     box-shadow: var(--shadow);
     transition: transform .25s ease, box-shadow .25s ease;
@@ -141,7 +142,7 @@
     justify-content: center;
     width: 56px;
     height: 56px;
-    border-radius: 14px;
+    border-radius: var(--radius-lg);
     background: linear-gradient(135deg, rgba(90, 169, 255, .15), rgba(90, 169, 255, .05));
     color: var(--brand);
     margin-bottom: 16px;
@@ -191,7 +192,7 @@
     width: 100%;
     max-width: 680px;
     background: #0d1117;
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: 0 20px 50px rgba(0, 0, 0, .4), 0 0 0 1px rgba(255, 255, 255, .05);
     font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;

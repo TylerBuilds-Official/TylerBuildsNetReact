@@ -33,6 +33,9 @@ const SUGGESTED_QUESTIONS = [
   "Do you offer phone support?",
 ];
 
+// Persist message count across modal open/close within same page session
+let sessionMessageCount = 0;
+
 const ProjectsAISupportDemo: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -44,7 +47,7 @@ const ProjectsAISupportDemo: React.FC<{ onClose: () => void }> = ({ onClose }) =
   ]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
-  const [messageCount, setMessageCount] = useState(0);
+  const [messageCount, setMessageCount] = useState(sessionMessageCount);
   const [error, setError] = useState<string | null>(null);
   const [suggestionsClicked, setSuggestionsClicked] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -78,7 +81,10 @@ const ProjectsAISupportDemo: React.FC<{ onClose: () => void }> = ({ onClose }) =
     setInput("");
     setIsTyping(true);
     setError(null);
-    setMessageCount((prev) => prev + 1);
+    setMessageCount((prev) => {
+      sessionMessageCount = prev + 1;
+      return prev + 1;
+    });
 
     try {
       const conversationHistory = [
