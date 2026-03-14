@@ -29,6 +29,7 @@
 @import './pages/projects.css';
 @import './pages/guides.css';
 @import './pages/contact.css';
+@import './pages/not-found.css';
 
 /* Responsive Overrides */
 @import './responsive/layout.css';

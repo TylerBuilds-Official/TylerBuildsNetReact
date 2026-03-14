@@ -7,6 +7,7 @@ import About from "./pages/about";
 import Projects from "./pages/projects";
 import Contact from "./pages/contact";
 import Guides from "./pages/guides";
+import NotFound from "./pages/not-found";
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                         <Route path="/projects" element={<Projects />} />
                         <Route path="/guides" element={<Guides />} />
                         <Route path="/contact" element={<Contact />} />
+                        <Route path="*" element={<NotFound />} />
                     </Routes>
                 </Layout>
             </ThemeProvider>
