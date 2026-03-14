@@ -13,8 +13,8 @@
     inset: 0;
     pointer-events: none;
     background:
-        radial-gradient(700px 350px at 20% 30%, rgba(90, 169, 255, .09), transparent 55%),
-        radial-gradient(600px 300px at 75% 60%, rgba(90, 169, 255, .05), transparent 50%);
+        radial-gradient(700px 350px at 20% 30%, var(--brand-glow), transparent 55%),
+        radial-gradient(600px 300px at 75% 60%, var(--brand-glow-subtle), transparent 50%);
     z-index: 0;
 }
 
@@ -44,7 +44,7 @@
 }
 
 .stats-card {
-    background: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, 0));
+    background: linear-gradient(180deg, var(--glass), transparent);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     padding: 28px 32px;
@@ -56,6 +56,15 @@
 .stats-card:hover {
     transform: perspective(800px) rotateX(4deg) rotateY(-4deg) translateY(-4px);
     box-shadow: 0 20px 44px rgba(0, 0, 0, .35);
+}
+
+[data-theme="light"] .stats-card {
+    box-shadow: none;
+}
+
+[data-theme="light"] .stats-card:hover {
+    transform: none;
+    box-shadow: none;
 }
 
 .stats-card-inner {
@@ -143,7 +152,7 @@
     width: 56px;
     height: 56px;
     border-radius: var(--radius-lg);
-    background: linear-gradient(135deg, rgba(90, 169, 255, .15), rgba(90, 169, 255, .05));
+    background: linear-gradient(135deg, var(--brand-glow), var(--brand-glow-subtle));
     color: var(--brand);
     margin-bottom: 16px;
     transition: transform .2s ease, background .2s ease;
@@ -151,7 +160,7 @@
 
 .value-card:hover .value-icon {
     transform: scale(1.1) rotate(-3deg);
-    background: linear-gradient(135deg, rgba(90, 169, 255, .25), rgba(90, 169, 255, .1));
+    background: linear-gradient(135deg, rgba(90, 169, 255, .25), var(--brand-glow));
 }
 
 .value-card h3 {
@@ -187,14 +196,17 @@
     margin: 0;
 }
 
-/* Terminal Component */
+/* Terminal Component - locked to dark theme */
 .terminal {
+    --border: #2a323c;
+    --muted: #b0bccb;
+    --brand: #5aa9ff;
     width: 100%;
     max-width: 680px;
     background: #0d1117;
     border-radius: var(--radius-lg);
     overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, .4), 0 0 0 1px rgba(255, 255, 255, .05);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, .4), 0 0 0 1px var(--glass-border);
     font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
     margin-bottom: 32px;
 }
@@ -206,6 +218,7 @@
     padding: 12px 16px;
     background: #161b22;
     border-bottom: 1px solid rgba(255, 255, 255, .05);
+    /* Terminal stays dark in both themes */
 }
 
 .terminal-buttons {

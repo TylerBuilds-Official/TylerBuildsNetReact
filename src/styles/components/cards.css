@@ -16,7 +16,17 @@
 
 .card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 14px 34px rgba(0, 0, 0, .28);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Light theme: flat cards */
+[data-theme="light"] .card {
+    box-shadow: none;
+}
+
+[data-theme="light"] .card:hover {
+    transform: none;
+    box-shadow: none;
 }
 
 .project-card {
@@ -53,7 +63,7 @@
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--brand);
-    background: rgba(90, 169, 255, 0.1);
+    background: var(--brand-glow);
     padding: 4px 10px;
     border-radius: var(--radius);
 }

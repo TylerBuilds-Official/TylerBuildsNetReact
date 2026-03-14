@@ -18,7 +18,7 @@ const ensureFavicon = () => {
   if (!theme) {
     theme = document.createElement('meta');
     theme.name = 'theme-color';
-    theme.content = '#0b0d10';
+    theme.content = '#0e1117';
     head.appendChild(theme);
   }
 };

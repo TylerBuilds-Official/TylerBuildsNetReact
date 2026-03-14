@@ -2,47 +2,116 @@
 .footer {
     border-top: 1px solid var(--border);
     background: var(--surface);
+    margin-top: 48px;
 }
 
-.footer-inner {
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 40px;
+    padding: 40px 20px 32px;
+}
+
+/* Brand column */
+.footer-logo-text {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text);
+    letter-spacing: 0.2px;
+}
+
+.footer-tagline {
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin: 8px 0 0;
+    max-width: 280px;
+}
+
+/* Nav + Connect columns */
+.footer-nav,
+.footer-connect {
     display: flex;
-    gap: 12px;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px 16px 16px 16px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 8px;
 }
 
-.socials {
-    display: flex;
-    gap: 14px;
+.footer-nav-heading {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text);
+    margin-bottom: 4px;
 }
 
-.socials a {
+.footer-nav a,
+.footer-connect a {
     color: var(--muted);
     text-decoration: none;
+    font-size: 0.88rem;
+    transition: color 0.15s ease;
 }
 
-.socials a:hover {
+.footer-nav a:hover,
+.footer-connect a:hover {
     color: var(--text);
+}
+
+/* Bottom bar */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-top: 1px solid var(--border);
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--muted);
+}
+
+/* Responsive - Tablet */
+@media (max-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        padding: 32px 20px 24px;
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
+
+    .footer-tagline {
+        max-width: 100%;
+    }
 }
 
 /* Responsive - Mobile */
 @media (max-width: 640px) {
-    .footer-inner {
-        flex-direction: column;
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 28px 16px 20px;
+        text-align: center;
+    }
+
+    .footer-tagline {
+        max-width: 100%;
+        margin: 8px auto 0;
+    }
+
+    .footer-nav,
+    .footer-connect {
         align-items: center;
-        gap: 12px;
-        padding: 14px 0;
     }
 
-    .socials {
-        gap: 16px;
-        padding-bottom: 12px;
-    }
-
-    .socials a {
-        padding: 4px;
-        font-size: 1.1rem;
+    .footer-bottom {
+        flex-direction: column;
+        gap: 4px;
+        padding: 14px 16px;
     }
 }

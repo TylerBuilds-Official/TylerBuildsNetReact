@@ -12,7 +12,7 @@ const steps = [
     {
         title: "Proposal",
         desc:
-            "I send a clear proposal with scope, timeline, and pricing. We refine it together until it's exactly right — no surprises or hidden costs.",
+            "I send a clear proposal with scope, timeline, and pricing. We refine it together until it's exactly right. No surprises or hidden costs.",
     },
     {
         title: "Build",

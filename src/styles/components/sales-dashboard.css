@@ -17,7 +17,7 @@
     justify-content: space-between;
     padding: 20px 24px;
     border-bottom: 1px solid var(--border);
-    background: linear-gradient(180deg, rgba(255,255,255,.03), transparent);
+    background: linear-gradient(180deg, var(--glass-hover), transparent);
 }
 
 .dashboard-header h3 {
@@ -96,7 +96,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(90, 169, 255, .12);
+    background: var(--brand-glow);
     color: var(--brand);
 }
 
@@ -424,7 +424,7 @@
     justify-content: space-between;
     padding: 14px 24px;
     border-top: 1px solid var(--border);
-    background: rgba(255,255,255,.02);
+    background: var(--glass-hover);
 }
 
 .dashboard-live-indicator {

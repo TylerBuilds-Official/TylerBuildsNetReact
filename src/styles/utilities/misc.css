@@ -28,9 +28,9 @@
 }
 
 .segmented .active {
-    background: linear-gradient(180deg, #6db8ff 0%, var(--brand) 100%);
+    background: linear-gradient(180deg, var(--btn-gradient-from) 0%, var(--btn-gradient-to) 100%);
     color: var(--brand-contrast);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, .12) inset;
+    box-shadow: var(--inset-glow);
 }
 
 .segmented .active:hover {
@@ -52,9 +52,9 @@
     position: absolute;
     top: 4px;
     height: calc(100% - 8px);
-    background: linear-gradient(180deg, #6db8ff 0%, var(--brand) 100%);
+    background: linear-gradient(180deg, var(--btn-gradient-from) 0%, var(--btn-gradient-to) 100%);
     border-radius: var(--radius-sm);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, .12) inset;
+    box-shadow: var(--inset-glow);
     transition: left .3s cubic-bezier(.4, 0, .2, 1), width .3s cubic-bezier(.4, 0, .2, 1);
     pointer-events: none;
     z-index: 0;
@@ -95,7 +95,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: rgba(90, 169, 255, .2);
+    background: var(--brand-glow);
     color: var(--brand);
     font-size: 12px;
     font-weight: 700;
@@ -201,7 +201,7 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background: radial-gradient(400px 200px at 0% 0%, rgba(90, 169, 255, .08), transparent 60%);
+    background: radial-gradient(400px 200px at 0% 0%, var(--brand-glow), transparent 60%);
 }
 
 .tool-pane {
@@ -237,7 +237,7 @@
 
 /* CTA strip */
 .cta-strip {
-    background: linear-gradient(90deg, rgba(90, 169, 255, .18), rgba(90, 169, 255, .10) 60%, transparent);
+    background: linear-gradient(90deg, var(--brand-glow), var(--brand-glow-subtle) 60%, transparent);
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
     border-right: 1px solid var(--border);
@@ -349,11 +349,18 @@
     max-width: 800px;
     width: 90%;
     max-height: 85vh;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
 }
 
 .demo-modal-wide {
     max-width: 1000px;
     width: 95%;
+}
+
+[data-theme="light"] .demo-overlay {
+    background: rgba(0, 0, 0, 0.4);
 }
 
 /* Responsive */

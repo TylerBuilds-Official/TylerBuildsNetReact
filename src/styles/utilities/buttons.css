@@ -1,10 +1,10 @@
-/* Components */
+/* Buttons */
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 4px 12px;
+    padding: 6px 12px;
     border-radius: var(--radius-sm);
     border: 1px solid var(--border);
     background: var(--surface);
@@ -13,7 +13,7 @@
     font-weight: 600;
     font-size: 0.95rem;
     text-decoration: none;
-    box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset;
+    box-shadow: none;
     transition: transform .15s ease, box-shadow .2s ease, filter .2s ease, border-color .2s ease, background .2s ease;
 }
 
@@ -26,21 +26,47 @@
 }
 
 .btn.primary {
-    background: linear-gradient(180deg, #6db8ff 0%, var(--brand) 100%);
+    background: linear-gradient(180deg, var(--btn-gradient-from) 0%, var(--btn-gradient-to) 100%);
     color: var(--brand-contrast);
     border-color: transparent;
     border-radius: var(--radius);
     box-shadow:
-        0 1px 0 rgba(255, 255, 255, .15) inset,
+        var(--inset-glow),
         0 2px 8px rgba(90, 169, 255, .2);
 }
 
 .btn.primary:hover {
-    background: linear-gradient(180deg, #7ec4ff 0%, #68b0f5 100%);
+    background: linear-gradient(180deg, var(--btn-gradient-hover-from) 0%, var(--btn-gradient-hover-to) 100%);
     box-shadow:
-        0 1px 0 rgba(255, 255, 255, .18) inset,
+        var(--inset-glow),
         0 6px 20px rgba(90, 169, 255, .3);
     transform: translateY(-1px);
+}
+
+/* Light theme: completely flat buttons */
+[data-theme="light"] .btn {
+    border-color: #cdd5df;
+    box-shadow: none;
+}
+
+[data-theme="light"] .btn:hover {
+    border-color: #b8c2ce;
+    background: #edf0f5;
+    box-shadow: none;
+    transform: none;
+}
+
+[data-theme="light"] .btn.primary {
+    background: var(--brand);
+    border-color: transparent;
+    box-shadow: none;
+}
+
+[data-theme="light"] .btn.primary:hover {
+    background: #155fa8;
+    border-color: transparent;
+    box-shadow: none;
+    transform: none;
 }
 
 .cta {

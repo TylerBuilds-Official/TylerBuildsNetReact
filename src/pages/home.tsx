@@ -7,10 +7,11 @@ import SegmentedSlider from "../components/GlobalUISegmentedSlider.tsx";
 const Home: React.FC = () => {
   const [focus, setFocus] = useState<"automation" | "ai">("automation");
   const [toolsTab, setToolsTab] = useState<"dashboards" | "integrations" | "automation">("dashboards");
-  const subtitle =
-    focus === "automation"
-      ? "I help mid-sized businesses save time and increase revenue with custom automation and AI-powered tools. From messy manual processes to smooth, automated workflows. I build solutions that fit your business exactly."
-      : "Put AI to work for your business. I create custom AI assistants, automated customer support, intelligent data analysis, and more. Real results without the hype. Solutions that actually save you time and money.";
+
+  const subtitles = {
+    automation: "I help mid-sized businesses save time and increase revenue with custom automation and AI-powered tools. From messy manual processes to smooth, automated workflows. I build solutions that fit your business exactly.",
+    ai: "Put AI to work for your business. I create custom AI assistants, automated customer support, intelligent data analysis, and more. Real results without the hype. Solutions that actually save you time and money.",
+  };
 
   const toolsCopy = useMemo(() => ({
     dashboards: {
@@ -39,25 +40,16 @@ const Home: React.FC = () => {
           <div className="hero-copy">
             <p className="eyebrow">Hello, I'm</p>
             <h1>Tyler, Your Automation Partner</h1>
-            <div className="segmented" role="tablist" aria-label="Focus">
-              <button
-                role="tab"
-                aria-selected={focus === "automation"}
-                className={focus === "automation" ? "active" : ""}
-                onClick={() => setFocus("automation")}
-              >
-                Business Automation
-              </button>
-              <button
-                role="tab"
-                aria-selected={focus === "ai"}
-                className={focus === "ai" ? "active" : ""}
-                onClick={() => setFocus("ai")}
-              >
-                AI Solutions
-              </button>
-            </div>
-            <p className="subtitle">{subtitle}</p>
+            <SegmentedSlider
+              tabs={[
+                { key: "automation", label: "Business Automation" },
+                { key: "ai",         label: "AI Solutions" },
+              ]}
+              active={focus}
+              onSelect={(key) => setFocus(key as typeof focus)}
+              ariaLabel="Focus"
+            />
+            <p className="subtitle hero-subtitle" key={focus}>{subtitles[focus]}</p>
             <div className="trust-note" aria-live="polite">
               <span className="trust-dot" aria-hidden="true"></span>
               <span>Available for new projects. Based in Spokane, WA.</span>

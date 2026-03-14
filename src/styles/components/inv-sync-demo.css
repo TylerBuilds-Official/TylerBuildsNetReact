@@ -17,7 +17,7 @@
     justify-content: space-between;
     padding: 20px 24px;
     border-bottom: 1px solid var(--border);
-    background: linear-gradient(180deg, rgba(255,255,255,.03), transparent);
+    background: linear-gradient(180deg, var(--glass-hover), transparent);
 }
 
 .inv-sync-header h3 {
@@ -66,7 +66,7 @@
     gap: 12px;
     padding: 14px 16px;
     border-bottom: 1px solid var(--border);
-    background: rgba(255,255,255,.02);
+    background: var(--glass-hover);
 }
 
 .inv-sync-system-icon {
@@ -116,7 +116,7 @@
 }
 
 .inv-sync-item:hover {
-    background: rgba(255,255,255,.03);
+    background: var(--glass-hover);
 }
 
 .inv-sync-item-name {
@@ -258,8 +258,10 @@
     margin-top: 4px;
 }
 
-/* Sync Log */
+/* Sync Log - stays dark in both themes */
 .inv-sync-log {
+    --border: #2a323c;
+    --muted: #b0bccb;
     background: #0a0c0f;
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
@@ -270,7 +272,7 @@
 
 .inv-sync-log-header {
     padding: 10px 14px;
-    background: rgba(255,255,255,.03);
+    background: rgba(255,255,255,.03); /* stays dark */
     border-bottom: 1px solid var(--border);
     font-size: 0.7rem;
     font-weight: 600;
@@ -316,7 +318,7 @@
     justify-content: space-between;
     padding: 16px 24px;
     border-top: 1px solid var(--border);
-    background: rgba(255,255,255,.02);
+    background: var(--glass-hover);
 }
 
 .inv-sync-status {

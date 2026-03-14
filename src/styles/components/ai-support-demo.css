@@ -18,7 +18,7 @@
     justify-content: space-between;
     padding: 16px 20px;
     border-bottom: 1px solid var(--border);
-    background: linear-gradient(180deg, rgba(255,255,255,.03), transparent);
+    background: linear-gradient(180deg, var(--glass-hover), transparent);
 }
 
 .ai-support-header-info {
@@ -237,7 +237,7 @@
 
 .ai-support-suggestion:hover {
     border-color: var(--brand);
-    background: rgba(90, 169, 255, .05);
+    background: var(--brand-glow-subtle);
 }
 
 /* Input */
@@ -280,7 +280,7 @@
 .ai-support-footer {
     padding: 14px 20px;
     border-top: 1px solid var(--border);
-    background: rgba(255,255,255,.02);
+    background: var(--glass-hover);
 }
 
 .ai-support-footer-stats {

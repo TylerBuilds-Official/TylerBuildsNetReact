@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "./context/ThemeContext";
 import Layout from "./layout/layout";
 import Home from "./pages/home";
 import About from "./pages/about";
@@ -10,15 +11,17 @@ import Guides from "./pages/guides";
 function App() {
     return (
         <BrowserRouter>
-            <Layout>
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/projects" element={<Projects />} />
-                    <Route path="/guides" element={<Guides />} />
-                    <Route path="/contact" element={<Contact />} />
-                </Routes>
-            </Layout>
+            <ThemeProvider>
+                <Layout>
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/about" element={<About />} />
+                        <Route path="/projects" element={<Projects />} />
+                        <Route path="/guides" element={<Guides />} />
+                        <Route path="/contact" element={<Contact />} />
+                    </Routes>
+                </Layout>
+            </ThemeProvider>
         </BrowserRouter>
     );
 }

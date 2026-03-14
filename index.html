@@ -2,21 +2,48 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5 user-scalable=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=no" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <title>TylerBuilds | Full-Stack Developer</title>
+        <title>TylerBuilds | Custom Automation &amp; AI Solutions for Business</title>
 
-        <meta name="description" content="I design, build, and launch performant, accessible web apps that convert. React, TypeScript, and modern tooling, from idea to production." />
-        <meta name="theme-color" content="#0b0d10" />
+        <meta name="description" content="I help mid-sized businesses save time and increase revenue with custom automation, AI platforms, and software built for their exact workflow." />
+        <meta name="theme-color" content="#0e1117" />
+        <meta name="author" content="Tyler Emery" />
 
+        <!-- Open Graph -->
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="TylerBuilds | Full-Stack Developer" />
-        <meta property="og:description" content="I design, build, and launch performant, accessible web apps that convert. React, TypeScript, and modern tooling, from idea to production." />
+        <meta property="og:site_name" content="TylerBuilds" />
+        <meta property="og:title" content="TylerBuilds | Custom Automation & AI Solutions" />
+        <meta property="og:description" content="I help mid-sized businesses save time and increase revenue with custom automation, AI platforms, and software built for their exact workflow." />
         <meta property="og:url" content="https://tylerbuilds.net" />
+        <meta property="og:image" content="https://tylerbuilds.net/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="TylerBuilds - Custom Automation and AI Solutions for Business" />
+        <meta property="og:locale" content="en_US" />
 
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content="TylerBuilds | Full-Stack Developer" />
-        <meta name="twitter:description" content="I design, build, and launch performant, accessible web apps that convert. React, TypeScript, and modern tooling, from idea to production." />
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="TylerBuilds | Custom Automation & AI Solutions" />
+        <meta name="twitter:description" content="I help mid-sized businesses save time and increase revenue with custom automation, AI platforms, and software built for their exact workflow." />
+        <meta name="twitter:image" content="https://tylerbuilds.net/og-image.png" />
+        <meta name="twitter:image:alt" content="TylerBuilds - Custom Automation and AI Solutions for Business" />
+
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+        <!-- Prevent flash: apply saved theme before first paint -->
+        <script>
+            (function() {
+                var t = localStorage.getItem('tb-theme') || 'auto';
+                var r = t === 'auto'
+                    ? (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')
+                    : t;
+                document.documentElement.setAttribute('data-theme', r);
+            })();
+        </script>
     </head>
 
     <body>
@@ -24,5 +51,3 @@
         <script type="module" src="/src/main.tsx"></script>
     </body>
 </html>
-
-

@@ -1,5 +1,19 @@
 :root {
-    /* Colors */
+    /* Layout (theme-independent) */
+    --container: 1160px;
+    --radius-sm: 4px;
+    --radius: 6px;
+    --radius-lg: 10px;
+
+    /* Breakpoints (for reference in comments) */
+    /* Mobile: max-width 640px */
+    /* Tablet: max-width 768px */
+    /* Desktop: min-width 1024px */
+}
+
+/* Dark theme (default) */
+:root,
+[data-theme="dark"] {
     --bg: #0e1117;
     --surface: #171c24;
     --border: #2a323c;
@@ -7,28 +21,47 @@
     --muted: #b0bccb;
     --brand: #5aa9ff;
     --brand-contrast: #08131f;
-    
-    /* Layout */
-    --container: 1160px;
-    --radius-sm: 2px;
-    --radius: 4px;
-    --radius-lg: 8px;
     --shadow: 0 10px 30px rgba(0, 0, 0, .30);
-    
-    /* Breakpoints (for reference in comments) */
-    /* Mobile: max-width 640px */
-    /* Tablet: max-width 768px */
-    /* Desktop: min-width 1024px */
+    --shadow-hover: 0 14px 34px rgba(0, 0, 0, .28);
+    --glass: rgba(255, 255, 255, .06);
+    --glass-border: rgba(255, 255, 255, .06);
+    --glass-hover: rgba(255, 255, 255, .03);
+    --brand-glow: rgba(90, 169, 255, .10);
+    --brand-glow-subtle: rgba(90, 169, 255, .06);
+    --logo-brightness: 2.8;
+    --btn-gradient-from: #6db8ff;
+    --btn-gradient-to: var(--brand);
+    --btn-gradient-hover-from: #7ec4ff;
+    --btn-gradient-hover-to: #68b0f5;
+    --inset-glow: 0 1px 0 rgba(255, 255, 255, .15) inset;
+    --inset-glow-subtle: 0 1px 0 rgba(255, 255, 255, .04) inset;
+    --nav-shadow: none;
+    color-scheme: dark;
 }
 
-@media (prefers-color-scheme: light) {
-    :root {
-        --bg: #f7f9fc;
-        --surface: #ffffff;
-        --border: #e6edf5;
-        --text: #0b1727;
-        --muted: #41556f;
-        --brand: #0b6bcb;
-        --brand-contrast: #ffffff;
-    }
+/* Light theme */
+[data-theme="light"] {
+    --bg: #eef2f7;
+    --surface: #ffffff;
+    --border: #dde4ed;
+    --text: #0e1726;
+    --muted: #4a5e78;
+    --brand: #1a73cc;
+    --brand-contrast: #ffffff;
+    --shadow: none;
+    --shadow-hover: none;
+    --glass: rgba(0, 0, 0, .03);
+    --glass-border: rgba(0, 0, 0, .06);
+    --glass-hover: rgba(0, 0, 0, .02);
+    --brand-glow: rgba(26, 115, 204, .12);
+    --brand-glow-subtle: rgba(26, 115, 204, .07);
+    --logo-brightness: 1;
+    --btn-gradient-from: #2d8be0;
+    --btn-gradient-to: var(--brand);
+    --btn-gradient-hover-from: #3d9aee;
+    --btn-gradient-hover-to: #1a6bbc;
+    --inset-glow: none;
+    --inset-glow-subtle: none;
+    --nav-shadow: 0 1px 3px rgba(0, 0, 0, .06);
+    color-scheme: light;
 }

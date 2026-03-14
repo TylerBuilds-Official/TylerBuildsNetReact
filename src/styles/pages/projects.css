@@ -16,8 +16,8 @@
     inset: 0;
     pointer-events: none;
     background:
-        radial-gradient(800px 400px at 80% 15%, rgba(90, 169, 255, .08), transparent 55%),
-        radial-gradient(600px 300px at 15% 50%, rgba(90, 169, 255, .06), transparent 50%);
+        radial-gradient(800px 400px at 80% 15%, var(--brand-glow), transparent 55%),
+        radial-gradient(600px 300px at 15% 50%, var(--brand-glow-subtle), transparent 50%);
     z-index: 0;
 }
 
@@ -48,8 +48,8 @@
     inset: -40px -20px;
     pointer-events: none;
     background:
-        radial-gradient(600px 300px at 30% 50%, rgba(90, 169, 255, .08), transparent 60%),
-        radial-gradient(400px 200px at 70% 30%, rgba(90, 169, 255, .05), transparent 50%);
+        radial-gradient(600px 300px at 30% 50%, var(--brand-glow), transparent 60%),
+        radial-gradient(400px 200px at 70% 30%, var(--brand-glow-subtle), transparent 50%);
     border-radius: var(--radius-lg);
     z-index: -1;
 }
@@ -120,12 +120,24 @@
     box-shadow: 0 16px 40px rgba(0, 0, 0, .3), 0 0 30px rgba(34, 197, 94, .1);
 }
 
+/* Light theme: flat project cards */
+[data-theme="light"] .project-card-enhanced {
+    box-shadow: none;
+}
+
+[data-theme="light"] .project-card-enhanced:hover,
+[data-theme="light"] .project-card-enhanced.shipped:hover,
+[data-theme="light"] .project-card-enhanced.demo:hover {
+    transform: none;
+    box-shadow: none;
+}
+
 /* Hero Metric */
 .hero-metric {
     padding: 20px 24px;
     border-bottom: 1px solid var(--border);
     text-align: center;
-    background: linear-gradient(180deg, rgba(255, 255, 255, .03), transparent);
+    background: linear-gradient(180deg, var(--glass-hover), transparent);
 }
 
 .hero-metric-value {
@@ -203,7 +215,7 @@
 
 .project-type-badge.shipped {
     color: var(--brand);
-    background: rgba(90, 169, 255, 0.1);
+    background: var(--brand-glow);
 }
 
 .project-type-badge.demo {
@@ -260,7 +272,7 @@
     inset: 0 -40px;
     pointer-events: none;
     background:
-        radial-gradient(500px 250px at 70% 40%, rgba(90, 169, 255, .07), transparent 60%),
+        radial-gradient(500px 250px at 70% 40%, var(--brand-glow), transparent 60%),
         radial-gradient(400px 200px at 20% 60%, rgba(34, 197, 94, .05), transparent 50%);
     border-radius: var(--radius-lg);
     z-index: -1;
@@ -304,6 +316,15 @@
     box-shadow: 0 14px 34px rgba(0, 0, 0, .25);
 }
 
+[data-theme="light"] .why-me-card {
+    box-shadow: none;
+}
+
+[data-theme="light"] .why-me-card:hover {
+    transform: none;
+    box-shadow: none;
+}
+
 .why-me-icon {
     display: inline-flex;
     align-items: center;
@@ -311,7 +332,7 @@
     width: 56px;
     height: 56px;
     border-radius: var(--radius-lg);
-    background: linear-gradient(135deg, rgba(90, 169, 255, .15), rgba(90, 169, 255, .05));
+    background: linear-gradient(135deg, var(--brand-glow), var(--brand-glow-subtle));
     color: var(--brand);
     margin-bottom: 16px;
     transition: transform .2s ease, background .2s ease;
@@ -319,7 +340,7 @@
 
 .why-me-card:hover .why-me-icon {
     transform: scale(1.1) rotate(-3deg);
-    background: linear-gradient(135deg, rgba(90, 169, 255, .25), rgba(90, 169, 255, .1));
+    background: linear-gradient(135deg, rgba(90, 169, 255, .25), var(--brand-glow));
 }
 
 .why-me-card h4 {
