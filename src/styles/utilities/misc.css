@@ -14,7 +14,7 @@
     border: 0;
     background: transparent;
     color: var(--muted);
-    padding: 8px 12px;
+    padding: 6px 12px;
     border-radius: var(--radius-sm);
     cursor: pointer;
     font-weight: 600;
@@ -91,7 +91,7 @@
 .step-badge {
     width: 20px;
     height: 20px;
-    border-radius: var(--radius);
+    border-radius: var(--radius-sm);
     display: inline-flex;
     align-items: center;
     justify-content: center;

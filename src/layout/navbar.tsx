@@ -24,8 +24,8 @@ const Navbar: React.FC = () => {
           <span>TylerBuilds</span>
         </Link>
 
-        <button 
-          className="hamburger" 
+        <button
+          className="hamburger"
           onClick={toggleMenu}
           aria-label="Toggle navigation menu"
           aria-expanded={isMenuOpen}
@@ -35,24 +35,24 @@ const Navbar: React.FC = () => {
           <span></span>
         </button>
 
-        <nav 
-          className={`nav-links ${isMenuOpen ? 'nav-open' : ''}`} 
+        <nav
+          className={`nav-links ${isMenuOpen ? "nav-open" : ""}`}
           aria-label="Primary"
         >
           <NavLink to="/" end className={({ isActive }) =>
-              isActive ? "active" : undefined} onClick={closeMenu}>Home</NavLink>
+            isActive ? "active" : undefined} onClick={closeMenu}>Home</NavLink>
 
           <NavLink to="/about" className={({ isActive }) =>
-              isActive ? "active" : undefined} onClick={closeMenu}>About</NavLink>
+            isActive ? "active" : undefined} onClick={closeMenu}>About</NavLink>
 
           <NavLink to="/projects" className={({ isActive }) =>
-              isActive ? "active" : undefined} onClick={closeMenu}>Projects</NavLink>
+            isActive ? "active" : undefined} onClick={closeMenu}>Projects</NavLink>
 
           <NavLink to="/guides" className={({ isActive }) =>
-              isActive ? "active" : undefined} onClick={closeMenu}>Guides</NavLink>
+            isActive ? "active" : undefined} onClick={closeMenu}>Guides</NavLink>
 
           <NavLink to="/contact" className={({ isActive }) =>
-              isActive ? "active" : undefined} onClick={closeMenu}>Contact</NavLink>
+            isActive ? "active" : undefined} onClick={closeMenu}>Contact</NavLink>
 
           <button
             className="theme-toggle"
