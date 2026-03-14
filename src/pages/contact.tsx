@@ -78,7 +78,7 @@ const Contact: React.FC = () => {
 
   return (
     <section className="container contact-page">
-      <div className="contact-intro">
+      <div className="contact-intro reveal">
         <h2>Let's Talk About Your Challenge</h2>
         <p className="muted">
           Tell me about the problem you're facing. I'll review your situation and we'll schedule a call to explore solutions together. No pressure, no obligation.
@@ -86,7 +86,7 @@ const Contact: React.FC = () => {
       </div>
 
       <div className="contact-grid">
-        <form className="card contact-form-card contact-form" onSubmit={onSubmit} noValidate>
+        <form className="card contact-form-card contact-form reveal" onSubmit={onSubmit} noValidate>
           <div className="stacked">
             <div>
               <h3>What's your biggest challenge?</h3>
@@ -209,7 +209,7 @@ const Contact: React.FC = () => {
         </form>
 
         <div className="stacked">
-          <div className="card">
+          <div className="card reveal">
             <div className="stacked">
               <h3>What happens next?</h3>
               <div className="process-steps">
@@ -241,7 +241,7 @@ const Contact: React.FC = () => {
             </div>
           </div>
 
-          <div className="card">
+          <div className="card reveal">
             <div className="stacked">
               <h3>Or book a call directly</h3>
               <p className="muted">Prefer to talk first? No problem, grab a time that works for you.</p>
@@ -251,7 +251,7 @@ const Contact: React.FC = () => {
             </div>
           </div>
 
-          <div className="card">
+          <div className="card reveal">
             <div className="stacked">
               <h3>Other ways to reach me</h3>
               <ul className="contact-methods">

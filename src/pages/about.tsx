@@ -140,7 +140,7 @@ const About: React.FC = () => {
       </section>
 
       {/* What I Do Section */}
-      <section className="container about-mission">
+      <section className="container about-mission reveal">
         <div className="card">
           <h2>What I Do</h2>
           <p>
@@ -165,7 +165,7 @@ const About: React.FC = () => {
         <p className="eyebrow">My Approach</p>
         <h2>Built Different</h2>
         <div className="values-grid">
-          <article className="card value-card">
+          <article className="card value-card reveal">
             <div className="value-icon">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
@@ -178,7 +178,7 @@ const About: React.FC = () => {
             </p>
           </article>
 
-          <article className="card value-card">
+          <article className="card value-card reveal">
             <div className="value-icon">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="12" r="10"></circle>
@@ -193,7 +193,7 @@ const About: React.FC = () => {
             </p>
           </article>
 
-          <article className="card value-card">
+          <article className="card value-card reveal">
             <div className="value-icon">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
@@ -211,7 +211,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Skills Section */}
-      <section className="container about-skills">
+      <section className="container about-skills reveal">
         <div className="about-skills-header">
           <p className="eyebrow">Technical</p>
           <h2>Skills & Tools</h2>
@@ -220,7 +220,7 @@ const About: React.FC = () => {
       </section>
 
       {/* CTA */}
-      <section className="cta-strip" role="region" aria-label="Work together">
+      <section className="cta-strip reveal" role="region" aria-label="Work together">
         <div className="container cta-strip-inner">
           <p><strong>Like what you see?</strong> Let's build something together.</p>
           <Link to="/contact" className="btn primary">Get in Touch</Link>

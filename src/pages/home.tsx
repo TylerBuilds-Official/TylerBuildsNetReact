@@ -79,22 +79,22 @@ const Home: React.FC = () => {
       </section>
 
       <section className="container features">
-        <article className="feature card">
+        <article className="feature card reveal">
           <h3>Understand</h3>
           <p className="muted">I learn your business inside and out: your workflow, your pain points, your goals.</p>
         </article>
-        <article className="feature card">
+        <article className="feature card reveal">
           <h3>Build</h3>
           <p className="muted">Custom solutions designed exactly for your needs. Fast, reliable tools your team will actually use.</p>
         </article>
-        <article className="feature card">
+        <article className="feature card reveal">
           <h3>Refine</h3>
           <p className="muted">We iterate until it's perfect, then keep it running smoothly as your business grows.</p>
         </article>
       </section>
 
       {/* Interactive Internal Tools mini-section */}
-      <section aria-labelledby="tools-section-heading">
+      <section aria-labelledby="tools-section-heading" className="reveal">
         <div className="card interactive">
           <div className="stacked">
             <div>
@@ -129,7 +129,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      <section className="cta-strip" role="region" aria-label="Work together">
+      <section className="cta-strip reveal" role="region" aria-label="Work together">
         <div className="container cta-strip-inner">
           <p><strong>Ready to stop wasting time?</strong> Let's automate it.</p>
           <Link to="/contact" className="btn primary">Get in Touch</Link>

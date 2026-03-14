@@ -104,7 +104,7 @@ const Projects: React.FC = () => {
 
       {/* How We'll Work Together - CENTERPIECE */}
       <div className="container">
-        <div className="process-section">
+        <div className="process-section reveal">
           <Card>
             <div className="stacked" style={{ textAlign: "center" }}>
               <div>
@@ -129,7 +129,7 @@ const Projects: React.FC = () => {
           {projects.map((p) => (
             <article 
               key={p.id} 
-              className={`project-card-enhanced ${p.type}`}
+              className={`project-card-enhanced ${p.type} reveal`}
             >
               {/* Hero Metric */}
               {p.heroMetric && (
@@ -228,13 +228,13 @@ const Projects: React.FC = () => {
 
       {/* Why Choose Me section */}
       <div className="container">
-        <section className="why-me-section">
+        <section className="why-me-section reveal">
           <div className="why-me-header">
             <p className="eyebrow">Why Work With Me?</p>
             <h2>What makes this different</h2>
           </div>
           <div className="why-me-grid">
-            <article className="why-me-card">
+            <article className="why-me-card reveal">
               <div className="why-me-icon">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
@@ -245,7 +245,7 @@ const Projects: React.FC = () => {
               <p>No account managers, no junior devs learning on your dime. Just one experienced developer who knows your project inside and out.</p>
             </article>
 
-            <article className="why-me-card">
+            <article className="why-me-card reveal">
               <div className="why-me-icon">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="12" cy="12" r="3"></circle>
@@ -256,7 +256,7 @@ const Projects: React.FC = () => {
               <p>Not a template or off-the-shelf solution. Every feature is designed around how you actually work, not how I think you should work.</p>
             </article>
 
-            <article className="why-me-card">
+            <article className="why-me-card reveal">
               <div className="why-me-icon">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="23 4 23 10 17 10"></polyline>
@@ -268,7 +268,7 @@ const Projects: React.FC = () => {
               <p>Your feedback shapes the final product. No "take it or leave it" deliveries. We refine together until it solves your problem perfectly.</p>
             </article>
 
-            <article className="why-me-card">
+            <article className="why-me-card reveal">
               <div className="why-me-icon">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
@@ -283,7 +283,7 @@ const Projects: React.FC = () => {
       </div>
 
       {/* Portfolio Link */}
-      <div className="container">
+      <div className="container reveal">
         <Card>
           <div className="portfolio-callout">
             <p className="eyebrow" style={{ color: "var(--brand)" }}>Full Portfolio</p>
@@ -295,7 +295,7 @@ const Projects: React.FC = () => {
       </div>
 
       {/* CTA Strip */}
-      <section className="cta-strip" role="region" aria-label="Get started">
+      <section className="cta-strip reveal" role="region" aria-label="Get started">
         <div className="container cta-strip-inner">
           <div>
             <p style={{ fontSize: "1.15rem", marginBottom: "4px" }}><strong>Ready to automate your biggest pain point?</strong></p>

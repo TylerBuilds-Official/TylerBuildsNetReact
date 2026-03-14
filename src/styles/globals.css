@@ -34,3 +34,6 @@
 @import './responsive/layout.css';
 @import './responsive/tablet.css';
 @import './responsive/mobile.css';
+
+/* Scroll Reveal (last to win cascade) */
+@import './utilities/reveal.css';

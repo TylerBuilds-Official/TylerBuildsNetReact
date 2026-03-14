@@ -130,7 +130,7 @@ const Guides: React.FC = () => {
       {/* Guide Cards */}
       <section className="container guides-grid" aria-label="Helpful guides">
         {guides.map((guide) => (
-          <article key={guide.id} className="guide-card">
+          <article key={guide.id} className="guide-card reveal">
             <div className="guide-card-header">
               <div className="guide-icon">{guide.icon}</div>
               <span className="guide-number">{guide.number}</span>
@@ -163,7 +163,7 @@ const Guides: React.FC = () => {
 
       {/* FAQ Section */}
       <section className="container">
-        <div className="faq-section">
+        <div className="faq-section reveal">
           <div className="faq-header">
             <p className="eyebrow">FAQ</p>
             <h2>Common questions</h2>
@@ -183,7 +183,7 @@ const Guides: React.FC = () => {
       </section>
 
       {/* CTA Strip */}
-      <section className="cta-strip" role="region" aria-label="Get started">
+      <section className="cta-strip reveal" role="region" aria-label="Get started">
         <div className="container cta-strip-inner">
           <p><strong>Ready to explore automation for your business?</strong> Let's talk about your specific needs.</p>
           <Link to="/contact" className="btn primary">Schedule a Free Consultation</Link>
