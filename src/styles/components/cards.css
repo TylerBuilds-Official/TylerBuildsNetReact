@@ -1,5 +1,5 @@
 .card {
-    background: rgba(18, 22, 27, .85);
+    background: var(--surface);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid var(--border);
