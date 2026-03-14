@@ -137,12 +137,15 @@
 .ai-support-message.user .ai-support-message-content {
     background: var(--brand);
     border-color: var(--brand);
-    color: var(--brand-contrast);
+    color: #ffffff;
 }
 
 [data-theme="light"] .ai-support-message.user .ai-support-message-content {
     background: #155fa8;
     border-color: #155fa8;
+}
+
+.ai-support-message.user .ai-support-message-content p {
     color: #ffffff;
 }
 
