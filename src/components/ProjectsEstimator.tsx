@@ -1,5 +1,9 @@
 import React, { useMemo, useState } from "react";
 
+// DEAD CODE — This component is no longer used.
+// Keeping it here for future reference if ever wanted.
+
+
 // --- Estimator ---
 type ProjectTypeKey = "dashboard" | "integration" | "automation" | "ai-assistant" | "reporting";
 
@@ -66,7 +70,7 @@ const Estimator: React.FC = () => {
         const name = String(formData.get("name") || "");
         const email = String(formData.get("email") || "");
 
-        setStatus(`Thanks${name ? `, ${name}` : ""}! I'll send a detailed quote to ${email} within 24 hours. (Demo only—wire to your email service or Formspree.)`);
+        setStatus(`Thanks${name ? `, ${name}` : ""}! I'll send a detailed quote to ${email} within 24 hours.`);
         form.reset();
     }
 
@@ -95,9 +99,24 @@ const Estimator: React.FC = () => {
                     <fieldset className="fieldset">
                         <legend className="muted legend-pad">How complex is it?</legend>
                         <div className="segmented wrap" role="tablist" aria-label="Complexity">
-                            <button type="button" role="tab" aria-selected={complexity === "simple"} className={complexity === "simple" ? "active" : ""} onClick={() => setComplexity("simple")}>Simple</button>
-                            <button type="button" role="tab" aria-selected={complexity === "moderate"} className={complexity === "moderate" ? "active" : ""} onClick={() => setComplexity("moderate")}>Moderate</button>
-                            <button type="button" role="tab" aria-selected={complexity === "complex"} className={complexity === "complex" ? "active" : ""} onClick={() => setComplexity("complex")}>Complex</button>
+
+                            <button type="button" role="tab" aria-selected={complexity === "simple"}
+                                    className={complexity === "simple" ? "active" : ""}
+                                    onClick={() => setComplexity("simple")}>
+                                Simple
+                            </button>
+
+                            <button type="button" role="tab" aria-selected={complexity === "moderate"}
+                                    className={complexity === "moderate" ? "active" : ""}
+                                    onClick={() => setComplexity("moderate")}>
+                                Moderate
+                            </button>
+
+                            <button type="button" role="tab" aria-selected={complexity === "complex"}
+                                    className={complexity === "complex" ? "active" : ""}
+                                    onClick={() => setComplexity("complex")}>
+                                Complex
+                            </button>
                         </div>
                         <p className="muted" style={{ fontSize: "0.85rem", marginTop: 8 }}>
                             Simple: 1-2 data sources, basic features. Complex: Many integrations, custom logic, multiple user roles.
@@ -107,9 +126,24 @@ const Estimator: React.FC = () => {
                     <label>
                         <span>Timeline</span>
                         <div className="segmented wrap" role="tablist" aria-label="Timeline urgency">
-                            <button type="button" role="tab" aria-selected={urgency === "flex"} className={urgency === "flex" ? "active" : ""} onClick={() => setUrgency("flex")}>Flexible</button>
-                            <button type="button" role="tab" aria-selected={urgency === "normal"} className={urgency === "normal" ? "active" : ""} onClick={() => setUrgency("normal")}>Normal</button>
-                            <button type="button" role="tab" aria-selected={urgency === "urgent"} className={urgency === "urgent" ? "active" : ""} onClick={() => setUrgency("urgent")}>Urgent</button>
+
+                            <button type="button" role="tab" aria-selected={urgency === "flex"}
+                                    className={urgency === "flex" ? "active" : ""}
+                                    onClick={() => setUrgency("flex")}>
+                                Flexible
+                            </button>
+
+                            <button type="button" role="tab" aria-selected={urgency === "normal"}
+                                    className={urgency === "normal" ? "active" : ""}
+                                    onClick={() => setUrgency("normal")}>
+                                Normal
+                            </button>
+
+                            <button type="button" role="tab" aria-selected={urgency === "urgent"}
+                                    className={urgency === "urgent" ? "active" : ""}
+                                    onClick={() => setUrgency("urgent")}>
+                                Urgent
+                            </button>
                         </div>
                     </label>
                 </form>

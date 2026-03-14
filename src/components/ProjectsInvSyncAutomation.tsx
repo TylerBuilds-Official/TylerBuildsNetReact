@@ -1,4 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
+import CloseSvg from "../assets/svg/common/CloseSvg";
+import CheckmarkSvg from "../assets/svg/common/CheckmarkSvg";
+import ChevronRightSvg from "../assets/svg/common/ChevronRightSvg";
+import WarningCircleSvg from "../assets/svg/common/WarningCircleSvg";
+import WarehouseSvg from "../assets/svg/DemoInvSync/WarehouseSvg";
+import MonitorSvg from "../assets/svg/nav/MonitorSvg";
 
 type InventoryItem = {
   sku: string;
@@ -30,7 +36,6 @@ const ProjectsInvSyncAutomation: React.FC<{ onClose: () => void }> = ({ onClose 
   const [lastSynced, setLastSynced] = useState<string | null>(null);
   const [stats, setStats] = useState({ itemsSynced: 0, conflictsResolved: 0, timeElapsed: 0 });
 
-  // Calculate mismatches
   const mismatches = inventory.filter((item) => item.warehouse !== item.accounting);
   const totalItems = inventory.length;
 
@@ -53,7 +58,6 @@ const ProjectsInvSyncAutomation: React.FC<{ onClose: () => void }> = ({ onClose 
 
     const startTime = Date.now();
 
-    // Step 1: Connecting
     addLogEntry("Connecting to Warehouse API...", "info");
     await delay(400);
     setSyncProgress(10);
@@ -65,7 +69,6 @@ const ProjectsInvSyncAutomation: React.FC<{ onClose: () => void }> = ({ onClose 
     addLogEntry("Connection established ✓", "success");
     await delay(200);
 
-    // Step 2: Fetching data
     addLogEntry("Fetching inventory records...", "info");
     await delay(500);
     setSyncProgress(35);
@@ -74,12 +77,10 @@ const ProjectsInvSyncAutomation: React.FC<{ onClose: () => void }> = ({ onClose 
     await delay(300);
     setSyncProgress(45);
 
-    // Step 3: Comparing and syncing
     addLogEntry(`Detected ${mismatches.length} discrepancies`, mismatches.length > 0 ? "warning" : "success");
     await delay(400);
     setSyncProgress(55);
 
-    // Animate each item syncing
     const newInventory = [...inventory];
     let conflictsResolved = 0;
 
@@ -89,7 +90,6 @@ const ProjectsInvSyncAutomation: React.FC<{ onClose: () => void }> = ({ onClose 
         addLogEntry(`Syncing ${item.sku}: ${item.accounting} → ${item.warehouse}`, "info");
         await delay(300);
 
-        // Animate the number changing
         newInventory[i] = { ...item, accounting: item.warehouse };
         setInventory([...newInventory]);
         conflictsResolved++;
@@ -100,7 +100,6 @@ const ProjectsInvSyncAutomation: React.FC<{ onClose: () => void }> = ({ onClose 
       setSyncProgress(55 + ((i + 1) / newInventory.length) * 35);
     }
 
-    // Step 4: Finalizing
     setSyncProgress(95);
     addLogEntry("Validating data integrity...", "info");
     await delay(400);
@@ -130,7 +129,6 @@ const ProjectsInvSyncAutomation: React.FC<{ onClose: () => void }> = ({ onClose 
     setStats({ itemsSynced: 0, conflictsResolved: 0, timeElapsed: 0 });
   };
 
-  // Update "last synced" text
   useEffect(() => {
     if (!lastSynced) return;
     const interval = setInterval(() => {
@@ -144,32 +142,22 @@ const ProjectsInvSyncAutomation: React.FC<{ onClose: () => void }> = ({ onClose 
 
   return (
     <div className="inv-sync-demo">
-      {/* Header */}
       <div className="inv-sync-header">
         <div>
           <h3>Inventory Sync Automation</h3>
           <p className="muted">Live demo: Watch data sync between systems in real-time</p>
         </div>
         <button className="btn inv-sync-close" onClick={onClose} aria-label="Close demo">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
+          <CloseSvg />
         </button>
       </div>
 
-      {/* Main Content */}
       <div className="inv-sync-content">
-        {/* Systems Row */}
         <div className="inv-sync-systems">
-          {/* Warehouse System */}
           <div className="inv-sync-system">
             <div className="inv-sync-system-header">
               <div className="inv-sync-system-icon warehouse">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                </svg>
+                <WarehouseSvg />
               </div>
               <div>
                 <span className="inv-sync-system-title">Warehouse System</span>
@@ -186,23 +174,15 @@ const ProjectsInvSyncAutomation: React.FC<{ onClose: () => void }> = ({ onClose 
             </div>
           </div>
 
-          {/* Sync Arrow */}
           <div className={`inv-sync-arrow ${isSyncing ? "syncing" : ""}`}>
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
+            <ChevronRightSvg />
             {isSyncing && <div className="inv-sync-pulse"></div>}
           </div>
 
-          {/* Accounting System */}
           <div className="inv-sync-system">
             <div className="inv-sync-system-header">
               <div className="inv-sync-system-icon accounting">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                  <line x1="8" y1="21" x2="16" y2="21"></line>
-                  <line x1="12" y1="17" x2="12" y2="21"></line>
-                </svg>
+                <MonitorSvg size={20} />
               </div>
               <div>
                 <span className="inv-sync-system-title">Accounting System</span>
@@ -228,7 +208,6 @@ const ProjectsInvSyncAutomation: React.FC<{ onClose: () => void }> = ({ onClose 
           </div>
         </div>
 
-        {/* Progress Bar */}
         {(isSyncing || syncComplete) && (
           <div className="inv-sync-progress-container">
             <div className="inv-sync-progress-track">
@@ -243,7 +222,6 @@ const ProjectsInvSyncAutomation: React.FC<{ onClose: () => void }> = ({ onClose 
           </div>
         )}
 
-        {/* Stats Row */}
         {syncComplete && (
           <div className="inv-sync-stats">
             <div className="inv-sync-stat">
@@ -261,7 +239,6 @@ const ProjectsInvSyncAutomation: React.FC<{ onClose: () => void }> = ({ onClose 
           </div>
         )}
 
-        {/* Sync Log */}
         {syncLog.length > 0 && (
           <div className="inv-sync-log">
             <div className="inv-sync-log-header">Sync Log</div>
@@ -277,24 +254,17 @@ const ProjectsInvSyncAutomation: React.FC<{ onClose: () => void }> = ({ onClose 
         )}
       </div>
 
-      {/* Footer Actions */}
       <div className="inv-sync-footer">
         <div className="inv-sync-status">
           {!isSyncing && !syncComplete && mismatches.length > 0 && (
             <span className="inv-sync-status-warning">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" y1="8" x2="12" y2="12"></line>
-                <line x1="12" y1="16" x2="12.01" y2="16"></line>
-              </svg>
+              <WarningCircleSvg />
               {mismatches.length} item{mismatches.length !== 1 ? "s" : ""} out of sync
             </span>
           )}
           {syncComplete && mismatches.length === 0 && (
             <span className="inv-sync-status-success">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
+              <CheckmarkSvg size={16} />
               All systems synchronized
             </span>
           )}
@@ -327,7 +297,6 @@ const ProjectsInvSyncAutomation: React.FC<{ onClose: () => void }> = ({ onClose 
   );
 };
 
-// Utility function
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export default ProjectsInvSyncAutomation;

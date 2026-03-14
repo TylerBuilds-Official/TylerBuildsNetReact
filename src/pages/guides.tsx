@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
 import FAQItem from "../components/GuidesFAQItem.tsx";
+import WrenchSvg from "../assets/svg/pages/WrenchSvg";
+import DollarSvg from "../assets/svg/pages/DollarSvg";
+import ActivitySvg from "../assets/svg/pages/ActivitySvg";
+import LayersSvg from "../assets/svg/pages/LayersSvg";
+import CheckmarkSvg from "../assets/svg/common/CheckmarkSvg";
 
 const guides = [
   {
@@ -17,11 +21,7 @@ const guides = [
       { label: "Disconnected tools", desc: "Your CRM, accounting software, and project management tools don't talk to each other." },
     ],
     outro: "Sound like your business? Automation can eliminate these pain points and free up your team for higher-value work.",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
-      </svg>
-    ),
+    icon: <WrenchSvg />,
   },
   {
     id: "roi",
@@ -35,12 +35,7 @@ const guides = [
       { label: "Break-even timeline", desc: "Most automation projects in the $3-8k range pay for themselves in 3-6 months through time savings alone." },
     ],
     outro: "Not every process needs automation, but the right ones transform how your business operates.",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <line x1="12" y1="1" x2="12" y2="23"></line>
-        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-      </svg>
-    ),
+    icon: <DollarSvg />,
   },
   {
     id: "process",
@@ -55,11 +50,7 @@ const guides = [
       { label: "Launch & support", desc: "Deploy smoothly with monitoring. I'm available for questions and ongoing improvements." },
     ],
     outro: "You work directly with me throughout. No handoffs to junior developers or account managers.",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-      </svg>
-    ),
+    icon: <ActivitySvg />,
   },
   {
     id: "examples",
@@ -76,13 +67,7 @@ const guides = [
     ],
     outro: null,
     outroLink: { text: "See more detailed examples and case studies", href: "/projects" },
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-        <polyline points="2 17 12 22 22 17"></polyline>
-        <polyline points="2 12 12 17 22 12"></polyline>
-      </svg>
-    ),
+    icon: <LayersSvg size={28} />,
   },
 ];
 
@@ -141,9 +126,7 @@ const Guides: React.FC = () => {
               {guide.items.map((item, idx) => (
                 <li key={idx}>
                   <span className="guide-list-icon">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
+                    <CheckmarkSvg size={16} strokeWidth={2.5} />
                   </span>
                   <div>
                     <strong>{item.label}:</strong> {item.desc}

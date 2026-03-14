@@ -1,4 +1,12 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import CloseSvg from "../assets/svg/common/CloseSvg";
+import InfoCircleSvg from "../assets/svg/common/InfoCircleSvg";
+import CheckmarkSvg from "../assets/svg/common/CheckmarkSvg";
+import TrendArrowSvg from "../assets/svg/common/TrendArrowSvg";
+import UserGroupSvg from "../assets/svg/DemoDashboard/UserGroupSvg";
+import CreditCardSvg from "../assets/svg/DemoDashboard/CreditCardSvg";
+import BellSvg from "../assets/svg/DemoDashboard/BellSvg";
+import WarningTriangleSvg from "../assets/svg/DemoDashboard/WarningTriangleSvg";
 
 type KPI = {
   label: string;
@@ -46,7 +54,6 @@ const scheduledAlerts: Omit<Alert, "id" | "time">[] = [
   { type: "success", message: "Daily target reached", detail: "Revenue goal hit at 2:34 PM" },
 ];
 
-// Animated number component
 const AnimatedNumber: React.FC<{
   value: number;
   prefix?: string;
@@ -97,7 +104,6 @@ const AnimatedNumber: React.FC<{
   );
 };
 
-// Bar chart component
 const SalesChart: React.FC<{ data: DailyData[]; maxValue: number }> = ({ data, maxValue }) => {
   const [animated, setAnimated] = useState(false);
 
@@ -128,7 +134,6 @@ const SalesChart: React.FC<{ data: DailyData[]; maxValue: number }> = ({ data, m
   );
 };
 
-// Data source card component
 const DataSourceCard: React.FC<{
   name: string;
   icon: React.ReactNode;
@@ -171,6 +176,12 @@ const DataSourceCard: React.FC<{
   );
 };
 
+const ALERT_ICONS = {
+  warning: <WarningTriangleSvg />,
+  info: <InfoCircleSvg />,
+  success: <CheckmarkSvg size={16} />,
+} as const;
+
 const ProjectsSalesDashboard: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [kpis, setKpis] = useState(initialKPIs);
   const [dailyData, setDailyData] = useState(initialDailyData);
@@ -185,10 +196,8 @@ const ProjectsSalesDashboard: React.FC<{ onClose: () => void }> = ({ onClose }) 
     return now.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
   };
 
-  // Simulate live updates
   useEffect(() => {
     const interval = setInterval(() => {
-      // Small random changes to KPIs
       setKpis((prev) =>
         prev.map((kpi) => {
           if (kpi.format === "percent") {
@@ -205,7 +214,6 @@ const ProjectsSalesDashboard: React.FC<{ onClose: () => void }> = ({ onClose }) 
         })
       );
 
-      // Update today's value in chart
       setDailyData((prev) =>
         prev.map((d) =>
           d.isToday ? { ...d, value: d.value + Math.floor(Math.random() * 150) } : d
@@ -218,7 +226,6 @@ const ProjectsSalesDashboard: React.FC<{ onClose: () => void }> = ({ onClose }) 
     return () => clearInterval(interval);
   }, []);
 
-  // Last updated counter
   useEffect(() => {
     const interval = setInterval(() => {
       setLastUpdated((prev) => prev + 1);
@@ -226,7 +233,6 @@ const ProjectsSalesDashboard: React.FC<{ onClose: () => void }> = ({ onClose }) 
     return () => clearInterval(interval);
   }, []);
 
-  // Trigger alerts
   useEffect(() => {
     const triggerAlert = () => {
       if (alertIndex.current < scheduledAlerts.length) {
@@ -248,7 +254,6 @@ const ProjectsSalesDashboard: React.FC<{ onClose: () => void }> = ({ onClose }) 
     return () => timers.forEach(clearTimeout);
   }, []);
 
-  // Simulate periodic syncing
   useEffect(() => {
     const syncCRM = () => {
       setCrmSyncing(true);
@@ -280,22 +285,17 @@ const ProjectsSalesDashboard: React.FC<{ onClose: () => void }> = ({ onClose }) 
 
   return (
     <div className="sales-dashboard-demo">
-      {/* Header */}
       <div className="dashboard-header">
         <div>
           <h3>Real-Time Sales Dashboard</h3>
           <p className="muted">Live demo: Watch data flow from multiple sources</p>
         </div>
         <button className="btn dashboard-close" onClick={onClose} aria-label="Close demo">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
+          <CloseSvg />
         </button>
       </div>
 
       <div className="dashboard-content">
-        {/* Data Sources */}
         <div className="dashboard-sources">
           <div className="dashboard-sources-label">Data Sources</div>
           <div className="dashboard-sources-grid">
@@ -303,14 +303,7 @@ const ProjectsSalesDashboard: React.FC<{ onClose: () => void }> = ({ onClose }) 
               name="CRM System"
               status={crmSyncing ? "syncing" : "connected"}
               lastSync={crmSyncing ? "Now" : "12s ago"}
-              icon={
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="9" cy="7" r="4"></circle>
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                </svg>
-              }
+              icon={<UserGroupSvg />}
               metrics={[
                 { label: "Active Deals", value: "23" },
                 { label: "Pipeline", value: "$142k" },
@@ -320,12 +313,7 @@ const ProjectsSalesDashboard: React.FC<{ onClose: () => void }> = ({ onClose }) 
               name="Payment Processor"
               status={paymentSyncing ? "syncing" : "connected"}
               lastSync={paymentSyncing ? "Now" : "8s ago"}
-              icon={
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
-                  <line x1="1" y1="10" x2="23" y2="10"></line>
-                </svg>
-              }
+              icon={<CreditCardSvg />}
               metrics={[
                 { label: "Transactions", value: "47" },
                 { label: "Volume", value: "$12.8k" },
@@ -334,7 +322,6 @@ const ProjectsSalesDashboard: React.FC<{ onClose: () => void }> = ({ onClose }) 
           </div>
         </div>
 
-        {/* KPI Cards */}
         <div className="dashboard-kpis">
           {kpis.map((kpi) => (
             <div key={kpi.label} className="dashboard-kpi">
@@ -346,20 +333,13 @@ const ProjectsSalesDashboard: React.FC<{ onClose: () => void }> = ({ onClose }) 
                 format={kpi.format}
               />
               <span className={`dashboard-kpi-trend ${kpi.trend >= 0 ? "up" : "down"}`}>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  {kpi.trend >= 0 ? (
-                    <polyline points="18 15 12 9 6 15"></polyline>
-                  ) : (
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  )}
-                </svg>
+                <TrendArrowSvg direction={kpi.trend >= 0 ? "up" : "down"} />
                 {Math.abs(kpi.trend)}%
               </span>
             </div>
           ))}
         </div>
 
-        {/* Chart */}
         <div className="dashboard-chart-section">
           <div className="dashboard-chart-header">
             <span className="dashboard-chart-title">Daily Sales This Week</span>
@@ -368,39 +348,17 @@ const ProjectsSalesDashboard: React.FC<{ onClose: () => void }> = ({ onClose }) 
           <SalesChart data={dailyData} maxValue={maxChartValue} />
         </div>
 
-        {/* Alerts */}
         {alerts.length > 0 && (
           <div className="dashboard-alerts">
             <div className="dashboard-alerts-label">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-              </svg>
+              <BellSvg />
               Live Alerts
             </div>
             <div className="dashboard-alerts-list">
               {alerts.map((alert) => (
                 <div key={alert.id} className={`dashboard-alert ${alert.type}`}>
                   <div className="dashboard-alert-icon">
-                    {alert.type === "warning" && (
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-                        <line x1="12" y1="9" x2="12" y2="13"></line>
-                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                      </svg>
-                    )}
-                    {alert.type === "info" && (
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <line x1="12" y1="16" x2="12" y2="12"></line>
-                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                      </svg>
-                    )}
-                    {alert.type === "success" && (
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                      </svg>
-                    )}
+                    {ALERT_ICONS[alert.type]}
                   </div>
                   <div className="dashboard-alert-content">
                     <span className="dashboard-alert-message">{alert.message}</span>
@@ -408,10 +366,7 @@ const ProjectsSalesDashboard: React.FC<{ onClose: () => void }> = ({ onClose }) 
                   </div>
                   <span className="dashboard-alert-time">{alert.time}</span>
                   <button className="dashboard-alert-dismiss" onClick={() => dismissAlert(alert.id)}>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="18" y1="6" x2="6" y2="18"></line>
-                      <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
+                    <CloseSvg size={14} />
                   </button>
                 </div>
               ))}
@@ -420,7 +375,6 @@ const ProjectsSalesDashboard: React.FC<{ onClose: () => void }> = ({ onClose }) 
         )}
       </div>
 
-      {/* Footer */}
       <div className="dashboard-footer">
         <div className="dashboard-live-indicator">
           <span className="dashboard-live-dot"></span>
@@ -430,11 +384,7 @@ const ProjectsSalesDashboard: React.FC<{ onClose: () => void }> = ({ onClose }) 
           </span>
         </div>
         <div className="dashboard-footer-note">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="12" y1="16" x2="12" y2="12"></line>
-            <line x1="12" y1="8" x2="12.01" y2="8"></line>
-          </svg>
+          <InfoCircleSvg size={14} />
           Compare to: End-of-week spreadsheet reports
         </div>
       </div>

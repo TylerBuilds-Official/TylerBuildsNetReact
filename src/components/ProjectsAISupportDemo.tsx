@@ -1,4 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
+import CloseSvg from "../assets/svg/common/CloseSvg";
+import InfoCircleSvg from "../assets/svg/common/InfoCircleSvg";
+import SupportAvatarSvg from "../assets/svg/DemoAI/SupportAvatarSvg";
+import SupportAvatarSmallSvg from "../assets/svg/DemoAI/SupportAvatarSmallSvg";
+import SupportErrorSvg from "../assets/svg/DemoAI/SupportErrorSvg";
+import SendButtonSvg from "../assets/svg/DemoAI/SendButtonSvg";
 
 type Message = {
   id: number;
@@ -11,26 +17,26 @@ const SYSTEM_PROMPT = `You are a friendly, helpful AI customer support assistant
 
 Your personality:
 - Warm and professional, but not robotic
-- Concise - keep responses under 3 sentences when possible
-- Proactive - offer next steps or related help
+- Concise - keep responses friendly and concise
+- Proactive - offer next steps or related help, your job is to help convert visitors into customers without being pushy, or salesy.
 
 Company info you know:
-- Projects: Be creative but keep it realistic.
+- Projects: Be creative but keep it realistic. Tyler builds custom software for your business.
 - Support hours: 24/7 chat, phone 9am-6pm EST
-- Pricing: We offer a variety of plans, including: Project flat rate, and developer hourly.
+- Pricing: We offer a variety of plans, including: Project flat rate, and developer hourly, potential finance options can be discussed.
 - We builds all types of software. If it will improve or benefit your business, we'll build it. Improving your workflow is our goal.'
 - Refund policy: With custom software such as this, there's no guarantee of a refund. We do have a satisfaction guarantee for all plans. We will work tirelessly to resolve your issue and ensure that we meet the customers needs.'
-- Integration: Works with Slack, Salesforce, QuickBooks, Zapier, and 50+ other tools
-- Implementation: Onboarding, training, and support documentation available
+- Integration: Works with Slack, Salesforce, QuickBooks, Zapier, and 50+ other tools. If there is an API to integrate with, we can work with you to make it happen.
+- Implementation: Onboarding, training, and support documentation available for all tools at all levels. We will ensure you are comfortable with the integration process.
 
-If asked something outside this scope, politely offer to connect them with a human agent.
+If asked something outside this scope, politely offer to connect them with a human agent. Refer them to tylere@tylerbuilds.net, and ensure the customer I will be with them within 24 hours, Mon-Sat.
 
 Remember: This is a demo showcasing AI support capabilities. Be impressive but authentic.`;
 
 const SUGGESTED_QUESTIONS = [
-  "Can I get a refund if it doesn't work for us?",
-  "What's the difference between your plans?",
-  "Do you offer phone support?",
+  "What are some ways that TylerBuilds can improve my business workflows?",
+  "How long does a project typically take to complete?",
+  "How do I get started with building a new tool for my business?",
 ];
 
 // Persist message count across modal open/close within same page session
@@ -41,7 +47,7 @@ const ProjectsAISupportDemo: React.FC<{ onClose: () => void }> = ({ onClose }) =
     {
       id: 0,
       role: "assistant",
-      content: "Hi there! 👋 I'm the TylerBuilds LLC support assistant. How can I help you today?",
+      content: "Hi there! 👋 I'm the TylerBuilds Support Agent. How can I help you today?",
       timestamp: getTimestamp(),
     },
   ]);
@@ -154,16 +160,11 @@ const ProjectsAISupportDemo: React.FC<{ onClose: () => void }> = ({ onClose }) =
       {/* Header */}
       <div className="ai-support-header">
         <div className="ai-support-header-info">
+
           <div className="ai-support-avatar">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M12 8V4H8"></path>
-              <rect x="2" y="8" width="20" height="12" rx="2"></rect>
-              <path d="M6 12h.01"></path>
-              <path d="M18 12h.01"></path>
-              <path d="M9 16v.01"></path>
-              <path d="M15 16v.01"></path>
-            </svg>
+            <SupportAvatarSvg/>
           </div>
+
           <div>
             <h3>AI Support Assistant</h3>
             <span className="ai-support-status">
@@ -172,36 +173,21 @@ const ProjectsAISupportDemo: React.FC<{ onClose: () => void }> = ({ onClose }) =
             </span>
           </div>
         </div>
+
         <button className="btn ai-support-close" onClick={onClose} aria-label="Close demo">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
+          <CloseSvg/>
         </button>
       </div>
 
       <div className="ai-support-banner">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="10"></circle>
-          <line x1="12" y1="16" x2="12" y2="12"></line>
-          <line x1="12" y1="8" x2="12.01" y2="8"></line>
-        </svg>
+        <InfoCircleSvg/>
         <span>Live demo with real AI • {remainingMessages} message{remainingMessages !== 1 ? "s" : ""} remaining</span>
       </div>
 
       <div className="ai-support-messages">
         {messages.map((msg) => (
           <div key={msg.id} className={`ai-support-message ${msg.role}`}>
-            {msg.role === "assistant" && (
-              <div className="ai-support-message-avatar">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 8V4H8"></path>
-                  <rect x="2" y="8" width="20" height="12" rx="2"></rect>
-                  <path d="M6 12h.01"></path>
-                  <path d="M18 12h.01"></path>
-                </svg>
-              </div>
-            )}
+            {msg.role === "assistant" && (<SupportAvatarSmallSvg/>)}
             <div className="ai-support-message-content">
               <p>{msg.content}</p>
               <span className="ai-support-message-time">{msg.timestamp}</span>
@@ -211,14 +197,7 @@ const ProjectsAISupportDemo: React.FC<{ onClose: () => void }> = ({ onClose }) =
 
         {isTyping && (
           <div className="ai-support-message assistant">
-            <div className="ai-support-message-avatar">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 8V4H8"></path>
-                <rect x="2" y="8" width="20" height="12" rx="2"></rect>
-                <path d="M6 12h.01"></path>
-                <path d="M18 12h.01"></path>
-              </svg>
-            </div>
+            <SupportAvatarSmallSvg/>
             <div className="ai-support-message-content">
               <div className="ai-support-typing">
                 <span></span>
@@ -230,14 +209,10 @@ const ProjectsAISupportDemo: React.FC<{ onClose: () => void }> = ({ onClose }) =
         )}
 
         {error && (
-          <div className="ai-support-error">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="15" y1="9" x2="9" y2="15"></line>
-              <line x1="9" y1="9" x2="15" y2="15"></line>
-            </svg>
-            {error}
-          </div>
+            <div className="ai-support-error">
+              <SupportErrorSvg/>
+              {error}
+            </div>
         )}
 
         <div ref={messagesEndRef} />
@@ -271,10 +246,7 @@ const ProjectsAISupportDemo: React.FC<{ onClose: () => void }> = ({ onClose }) =
           className="btn primary ai-support-send"
           disabled={!input.trim() || isTyping || messageCount >= MAX_MESSAGES}
         >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="22" y1="2" x2="11" y2="13"></line>
-            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-          </svg>
+        <SendButtonSvg/>
         </button>
       </form>
 

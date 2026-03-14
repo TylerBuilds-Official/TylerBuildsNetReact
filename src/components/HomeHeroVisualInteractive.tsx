@@ -31,12 +31,12 @@ const HeroVisualInteractive: React.FC<HeroVisualInteractiveProps> = ({
 
         for (let i = 0; i < count; i++) {
             newLogos.push({
-                id: Date.now() + i,
-                x: Math.random() * 80 + 20, // 20-80% from left
-                rotation: Math.random() * 720 - 360, // -360 to 360 degrees
-                delay: i * 100, // Stagger the drops
-                duration: Math.random() * 1000 + 2000, // 2-3 seconds
-                size: Math.random() * 30 + 40, // 40-70px
+                id:         Date.now() + i,
+                x:          Math.random() * 80 + 20,        // 20-80% from left
+                rotation:   Math.random() * 720 - 360,      // -360 to 360 degrees
+                delay:      i * 100,                        // Stagger the drops
+                duration:   Math.random() * 1000 + 2000,    // 2-3 seconds
+                size:       Math.random() * 30 + 40,        // 40-70px
             });
         }
 

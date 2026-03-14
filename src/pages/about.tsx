@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import {Link} from "react-router-dom";
+import ShieldSvg from "../assets/svg/pages/ShieldSvg";
+import InfoCircleSvg from "../assets/svg/common/InfoCircleSvg";
+import LayersSvg from "../assets/svg/pages/LayersSvg";
 
 const terminalLines = [
   { prompt: "$ tyler --skills", delay: 0 },
@@ -167,9 +170,7 @@ const About: React.FC = () => {
         <div className="values-grid">
           <article className="card value-card reveal">
             <div className="value-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-              </svg>
+              <ShieldSvg />
             </div>
             <h3>Reliability</h3>
             <p className="muted">
@@ -180,11 +181,7 @@ const About: React.FC = () => {
 
           <article className="card value-card reveal">
             <div className="value-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" y1="16" x2="12" y2="12"></line>
-                <line x1="12" y1="8" x2="12.01" y2="8"></line>
-              </svg>
+              <InfoCircleSvg size={32} />
             </div>
             <h3>Clarity</h3>
             <p className="muted">
@@ -195,11 +192,7 @@ const About: React.FC = () => {
 
           <article className="card value-card reveal">
             <div className="value-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                <polyline points="2 17 12 22 22 17"></polyline>
-                <polyline points="2 12 12 17 22 12"></polyline>
-              </svg>
+              <LayersSvg />
             </div>
             <h3>Pragmatism</h3>
             <p className="muted">

@@ -10,29 +10,30 @@ const Home: React.FC = () => {
 
   const subtitles = {
     automation: "I help mid-sized businesses save time and increase revenue with custom automation and AI-powered tools. From messy manual processes to smooth, automated workflows. I build solutions that fit your business exactly.",
-    ai: "Put AI to work for your business. I create custom AI assistants, automated customer support, intelligent data analysis, and more. Real results without the hype. Solutions that actually save you time and money.",
+    ai:         "Put AI to work for your business. I create custom AI assistants, automated customer support, intelligent data analysis, and more. Real results without the hype. Solutions that actually save you time and money.",
   };
 
   const toolsCopy = useMemo(() => ({
+
     dashboards: {
-      title: "Real-Time Dashboards",
-      desc:
-        "See your business data at a glance. Custom dashboards that pull from all your systems into one place. No more hunting through spreadsheets or switching between tools.",
-      tags: ["Live Data", "Custom Reports", "Team Access", "Mobile Friendly"],
+      title:    "Real-Time Dashboards",
+      desc:     "See your business data at a glance. Custom dashboards that pull from all your systems into one place. No more hunting through spreadsheets or switching between tools.",
+      tags:     ["Live Data", "Custom Reports", "Team Access", "Mobile Friendly"],
     },
+
     integrations: {
-      title: "System Integrations",
-      desc:
-        "Make your tools talk to each other. Connect Slack, Salesforce, QuickBooks, and more. Automate data flow between systems so your team can focus on what matters.",
-      tags: ["Connect Anything", "Auto-Sync", "Error-Free", "Always Running"],
+      title:    "System Integrations",
+      desc:     "Make your tools talk to each other. Connect Slack, Salesforce, QuickBooks, and more. Automate data flow between systems so your team can focus on what matters.",
+      tags:     ["Connect Anything", "Auto-Sync", "Error-Free", "Always Running"],
     },
+
     automation: {
-      title: "Workflow Automation",
-      desc:
-        "Stop doing the same tasks over and over. Automated approvals, scheduled reports, data imports, and custom workflows that save hours every week.",
-      tags: ["Time Savings", "No More Manual Entry", "Scheduled Jobs", "Smart Workflows"],
+      title:    "Workflow Automation",
+      desc:     "Stop doing the same tasks over and over. Automated approvals, scheduled reports, data imports, and custom workflows that save hours every week.",
+      tags:     ["Time Savings", "No More Manual Entry", "Scheduled Jobs", "Smart Workflows"],
     },
   }), []);
+
   return (
     <>
       <section className="hero">

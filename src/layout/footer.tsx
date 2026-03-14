@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
       <div className="footer-main">
         <div className="container footer-grid">
           <div className="footer-brand">
-            <span className="footer-logo-text">TylerBuilds</span>
+            <Link to="/" className="footer-logo-text">TylerBuilds</Link>
             <p className="footer-tagline">Custom automation and AI solutions for mid-sized businesses.</p>
           </div>
 
