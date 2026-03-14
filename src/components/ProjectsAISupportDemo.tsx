@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useMemo } from "react";
 import CloseSvg from "../assets/svg/common/CloseSvg";
 import InfoCircleSvg from "../assets/svg/common/InfoCircleSvg";
 import SupportAvatarSvg from "../assets/svg/DemoAI/SupportAvatarSvg";
@@ -17,7 +17,7 @@ const SYSTEM_PROMPT = `You are a friendly, helpful AI customer support assistant
 
 Your personality:
 - Warm and professional, but not robotic
-- Concise - keep responses friendly and concise
+- Concise - keep responses friendly and concise, avoid using MD formatting in messages. The only tag that is supported in this chat window is **bold**.
 - Proactive - offer next steps or related help, your job is to help convert visitors into customers without being pushy, or salesy.
 
 Company info you know:
@@ -63,6 +63,13 @@ const ProjectsAISupportDemo: React.FC<{ onClose: () => void }> = ({ onClose }) =
 
   function getTimestamp() {
     return new Date().toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
+  }
+
+  function formatMessage(text: string): string {
+    return text
+      .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+      .replace(/\n(\d+\.\s)/g, "<br/>$1")
+      .replace(/\n/g, "<br/>");
   }
 
   useEffect(() => {
@@ -189,7 +196,7 @@ const ProjectsAISupportDemo: React.FC<{ onClose: () => void }> = ({ onClose }) =
           <div key={msg.id} className={`ai-support-message ${msg.role}`}>
             {msg.role === "assistant" && (<SupportAvatarSmallSvg/>)}
             <div className="ai-support-message-content">
-              <p>{msg.content}</p>
+              <p dangerouslySetInnerHTML={{ __html: formatMessage(msg.content) }} />
               <span className="ai-support-message-time">{msg.timestamp}</span>
             </div>
           </div>

@@ -140,10 +140,25 @@
     color: var(--brand-contrast);
 }
 
+[data-theme="light"] .ai-support-message.user .ai-support-message-content {
+    background: #155fa8;
+    border-color: #155fa8;
+    color: #ffffff;
+}
+
 .ai-support-message-content p {
     margin: 0;
     font-size: 0.9rem;
     line-height: 1.5;
+}
+
+.ai-support-message-content p strong {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.ai-support-message.user .ai-support-message-content p strong {
+    color: inherit;
 }
 
 .ai-support-message-time {
