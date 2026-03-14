@@ -137,7 +137,7 @@ const Guides: React.FC = () => {
             {guide.outro && <p className="guide-outro">{guide.outro}</p>}
             {guide.outroLink && (
               <p className="guide-outro">
-                <Link to={guide.outroLink.href}>{guide.outroLink.text} →</Link>
+                <Link to={guide.outroLink.href}>{guide.outroLink.text}</Link>
               </p>
             )}
           </article>
