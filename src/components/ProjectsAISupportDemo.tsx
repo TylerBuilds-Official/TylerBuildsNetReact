@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useMemo } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import CloseSvg from "../assets/svg/common/CloseSvg";
 import InfoCircleSvg from "../assets/svg/common/InfoCircleSvg";
 import SupportAvatarSvg from "../assets/svg/DemoAI/SupportAvatarSvg";
