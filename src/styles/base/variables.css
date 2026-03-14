@@ -36,6 +36,7 @@
     --inset-glow: 0 1px 0 rgba(255, 255, 255, .15) inset;
     --inset-glow-subtle: 0 1px 0 rgba(255, 255, 255, .04) inset;
     --nav-shadow: none;
+    --focus-ring: 0 0 0 2px rgba(90, 169, 255, .45);
     color-scheme: dark;
 }
 
@@ -63,5 +64,6 @@
     --inset-glow: none;
     --inset-glow-subtle: none;
     --nav-shadow: 0 1px 3px rgba(0, 0, 0, .06);
+    --focus-ring: 0 0 0 2px rgba(26, 115, 204, .4);
     color-scheme: light;
 }

@@ -11,6 +11,22 @@ body,
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* Global focus-visible ring (keyboard nav only) */
+:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+}
+
+a:focus-visible {
+    border-radius: var(--radius-sm);
+}
+
+input:focus-visible,
+textarea:focus-visible {
+    border-color: var(--brand);
 }
 
 body {

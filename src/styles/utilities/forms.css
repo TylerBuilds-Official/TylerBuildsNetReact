@@ -28,7 +28,10 @@ input[type="checkbox"] {
     flex-shrink: 0;
 }
 
-input:focus,
-textarea:focus {
-    border-color: var(--brand);
+/* Radio/checkbox use browser default focus, not the box-shadow ring */
+input[type="radio"]:focus-visible,
+input[type="checkbox"]:focus-visible {
+    box-shadow: none;
+    outline: 2px solid var(--brand);
+    outline-offset: 2px;
 }

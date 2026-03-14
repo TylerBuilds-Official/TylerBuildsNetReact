@@ -362,6 +362,11 @@
         gap: 32px;
     }
 
+    .process-section::before,
+    .why-me-section::before {
+        inset: -20px 0;
+    }
+
     .projects-grid {
         grid-template-columns: 1fr;
     }

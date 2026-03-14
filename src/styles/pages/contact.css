@@ -116,12 +116,23 @@
 
 /* Contact methods list */
 .contact-methods {
+    list-style: none;
     margin: 0;
-    padding-left: 20px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
-.contact-methods li {
-    margin-bottom: 8px;
+.contact-methods li a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.15s ease;
+}
+
+.contact-methods li a:hover {
+    color: var(--text);
 }
 
 /* Right column stacked cards - ensure left alignment */
@@ -173,7 +184,7 @@
     }
 
     .contact-methods {
-        padding-left: 18px;
+        align-items: center;
     }
 }
 

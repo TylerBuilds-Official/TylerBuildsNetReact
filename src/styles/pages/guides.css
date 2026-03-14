@@ -328,6 +328,9 @@
 
 /* Guides page responsive - Tablet */
 @media (max-width: 768px) {
+    .faq-section::before {
+        inset: -20px 0;
+    }
     .guides-grid {
         grid-template-columns: 1fr;
     }
