@@ -45,7 +45,7 @@ const Contact: React.FC = () => {
     try {
       const response = await fetch("/.netlify/functions/send-email", {
         method: "POST",
-        body: JSON.stringify({ subject, body }),
+        body: JSON.stringify({ subject, body, reply_to: email }),
       });
 
       if (!response.ok) {

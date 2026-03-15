@@ -23,7 +23,7 @@ export const handler: Handler = async (event) => {
         const data = await response.json();
 
         return {
-            statusCode: 200,
+            statusCode: response.status,
             body: JSON.stringify(data),
         };
     } catch (err) {

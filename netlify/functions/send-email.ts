@@ -6,12 +6,13 @@ export const handler: Handler = async (event, _context) => {
     }
 
     try {
-        const { subject, body } = JSON.parse(event.body || "{}");
+        const { subject, body, reply_to } = JSON.parse(event.body || "{}");
 
-        const endpoint = process.env.ENDPOINT;
+        const endpoint  = process.env.ENDPOINT;
         const recipient = process.env.RECIPIENT;
+        const apiKey    = process.env.TB_API_KEY;
 
-        if (!endpoint || !recipient) {
+        if (!endpoint || !recipient || !apiKey) {
             throw new Error("Missing configuration");
         }
 
@@ -19,11 +20,14 @@ export const handler: Handler = async (event, _context) => {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                "X-API-Key": apiKey,
             },
             body: JSON.stringify({
+                recipient,
                 subject,
                 body,
-                recipient,
+                source: "contact_form",
+                reply_to: reply_to || null,
             }),
         });
 

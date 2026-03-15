@@ -114,10 +114,10 @@ const ProjectsAISupportDemo: React.FC<{ onClose: () => void }> = ({ onClose }) =
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                model: "gpt-4o-mini",
+                model: "gpt-5.2-chat-latest",
                 messages: conversationHistory,
-                max_tokens: 150,
-                temperature: 0.7,
+                max_completion_tokens: 4800,
+                temperature: 1,
             }),
         });
 
@@ -127,7 +127,7 @@ const ProjectsAISupportDemo: React.FC<{ onClose: () => void }> = ({ onClose }) =
       }
 
       const data = await response.json();
-      const assistantContent = data.choices[0]?.message?.content || "I apologize, I'm having trouble responding. Let me connect you with a human agent.";
+      const assistantContent = data.choices?.[0]?.message?.content || "I apologize, I'm having trouble responding. Let me connect you with a human agent.";
 
       // Simulate typing delay based on response length
       const typingDelay = Math.min(1500, assistantContent.length * 15);
