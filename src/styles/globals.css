@@ -23,6 +23,7 @@
 @import './components/inv-sync-demo.css';
 @import './components/sales-dashboard.css';
 @import './components/ai-support-demo.css';
+@import './components/chat-widget.css';
 
 /* Pages */
 @import './pages/about.css';

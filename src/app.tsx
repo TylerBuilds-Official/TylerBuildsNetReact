@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "./context/ThemeContext";
+import { ChatProvider } from "./context/ChatContext";
 import Layout from "./layout/layout";
 import Home from "./pages/home";
 import About from "./pages/about";
@@ -13,6 +14,7 @@ function App() {
     return (
         <BrowserRouter>
             <ThemeProvider>
+                <ChatProvider>
                 <Layout>
                     <Routes>
                         <Route path="/" element={<Home />} />
@@ -23,6 +25,7 @@ function App() {
                         <Route path="*" element={<NotFound />} />
                     </Routes>
                 </Layout>
+                </ChatProvider>
             </ThemeProvider>
         </BrowserRouter>
     );

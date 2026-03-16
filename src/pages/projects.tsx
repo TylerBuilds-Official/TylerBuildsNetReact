@@ -96,8 +96,21 @@ const Projects: React.FC = () => {
   const [selectedDemo, setSelectedDemo] = useState<string | null>(null);
 
   useEffect(() => {
-    document.body.style.overflow = selectedDemo ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
+    if (selectedDemo) {
+      const scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+
+      return () => {
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.left = '';
+        document.body.style.right = '';
+        window.scrollTo({ top: scrollY, behavior: 'instant' });
+      };
+    }
   }, [selectedDemo]);
 
   return (
