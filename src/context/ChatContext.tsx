@@ -100,6 +100,7 @@ export const ChatProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
                 body: JSON.stringify({
                     message: trimmed,
                     session_id: sessionRef.current,
+                    visitor_timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
                 }),
             });
 

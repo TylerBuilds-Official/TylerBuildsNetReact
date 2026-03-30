@@ -239,6 +239,52 @@
     30% { transform: translateY(-3px); opacity: 1; }
 }
 
+/* Status bar (shown below typing bubble on long operations) */
+.chat-widget__status-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 40px;
+    padding: 0 4px;
+    animation: widgetStatusSlideIn 0.35s ease;
+}
+
+.chat-widget__status-bar span {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--brand);
+    animation: widgetStatusPulse 2s ease-in-out infinite;
+}
+
+.chat-widget__status-shimmer {
+    width: 28px;
+    height: 3px;
+    border-radius: 2px;
+    background: linear-gradient(
+        90deg,
+        var(--border) 0%,
+        var(--brand) 50%,
+        var(--border) 100%
+    );
+    background-size: 200% 100%;
+    animation: widgetShimmer 1.6s ease-in-out infinite;
+}
+
+@keyframes widgetStatusSlideIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes widgetStatusPulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+@keyframes widgetShimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
 /* Error */
 .chat-widget__error {
     padding: 8px 12px;
@@ -452,4 +498,7 @@
     .chat-widget__message { animation: none; }
     .chat-widget__status-dot { animation: none; }
     .chat-widget__typing span { animation: none; }
+    .chat-widget__status-bar { animation: none; }
+    .chat-widget__status-bar span { animation: none; }
+    .chat-widget__status-shimmer { animation: none; }
 }
