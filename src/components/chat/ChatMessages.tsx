@@ -14,7 +14,7 @@ const STATUS_MESSAGES = [
 
 const TypingIndicator: React.FC = () => {
     const [status, setStatus] = useState<string | null>(null);
-    const [statusIdx, setStatusIdx] = useState(0);
+    const idxRef = useRef(0);
 
     useEffect(() => {
         let cycleTimer: ReturnType<typeof setInterval>;
@@ -24,12 +24,9 @@ const TypingIndicator: React.FC = () => {
             setStatus(STATUS_MESSAGES[0]);
 
             cycleTimer = setInterval(() => {
-                setStatusIdx(prev => {
-                    const next = Math.min(prev + 1, STATUS_MESSAGES.length - 1);
-                    setStatus(STATUS_MESSAGES[next]);
-
-                    return next;
-                });
+                const next = Math.min(idxRef.current + 1, STATUS_MESSAGES.length - 1);
+                idxRef.current = next;
+                setStatus(STATUS_MESSAGES[next]);
             }, 4000);
         }, 7000);
 
