@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const CALENDAR_URL = "https://calendly.com/tylere-tylerbuilds/project-meeting-15-minutes?hide_gdpr_banner=1&background_color=12161b&text_color=5aa9ff&primary_color=5aa9ff";
+const SCHEDULE_URL = "https://schedule.tylerbuilds.net";
 
 const Contact: React.FC = () => {
   const [status, setStatus] = useState<string | null>(null);
@@ -244,9 +244,9 @@ const Contact: React.FC = () => {
           <div className="card reveal">
             <div className="stacked">
               <h3>Or book a call directly</h3>
-              <p className="muted">Prefer to talk first? No problem, grab a time that works for you.</p>
-              <a className="btn primary" href={CALENDAR_URL} target="_blank" rel="noreferrer">
-                Schedule Free 30-Minute Call
+              <p className="muted">Prefer to talk first? No problem. Pick a time on Tyler's calendar and book in a few clicks.</p>
+              <a className="btn primary" href={SCHEDULE_URL} target="_blank" rel="noreferrer">
+                Schedule Free Consultation
               </a>
             </div>
           </div>
