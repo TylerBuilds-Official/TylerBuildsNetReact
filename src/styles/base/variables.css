@@ -5,6 +5,8 @@
     --radius: 6px;
     --radius-lg: 10px;
 
+    --font-sans: 'Inter', sans-serif;
+
     /* Breakpoints (for reference in comments) */
     /* Mobile: max-width 640px */
     /* Tablet: max-width 768px */
@@ -16,8 +18,10 @@
 [data-theme="dark"] {
     --bg: #0e1117;
     --surface: #171c24;
+    --surface-widget: #171c24;
     --border: #2a323c;
     --text: #e8eef6;
+    --text-bright: #ffffff;
     --muted: #b0bccb;
     --brand: #5aa9ff;
     --brand-contrast: #08131f;
@@ -44,8 +48,10 @@
 [data-theme="light"] {
     --bg: #eef2f7;
     --surface: #ffffff;
+    --surface-widget: #ffffff;
     --border: #dde4ed;
     --text: #0e1726;
+    --text-bright: #f3f1f1;
     --muted: #4a5e78;
     --brand: #1a73cc;
     --brand-contrast: #ffffff;

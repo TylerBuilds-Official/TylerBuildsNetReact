@@ -5,6 +5,7 @@ import ChatInput from './ChatInput';
 import ChatBubbleSvg from '../../assets/svg/common/ChatBubbleSvg';
 import SupportAvatarSvg from '../../assets/svg/DemoAI/SupportAvatarSvg';
 import CloseSvg from '../../assets/svg/common/CloseSvg';
+import ChatReminder from "./ChatReminderLabel.tsx";
 
 const SUGGESTED_QUESTIONS = [
     'What services does TylerBuilds offer?',
@@ -20,13 +21,20 @@ const ChatWidget: React.FC = () => {
         <>
             {/* Floating trigger button */}
             {!isOpen && (
-                <button
-                    className="chat-widget__trigger"
-                    onClick={toggle}
-                    aria-label="Open chat"
-                >
-                    <ChatBubbleSvg size={26} />
-                </button>
+                <div className="chat-widget">
+                    <ChatReminder />
+                    <div className="chat-widget__trigger_button">
+                        <button
+                            className="chat-widget__trigger"
+                            onClick={toggle}
+                            aria-label="Open chat"
+                        >
+                            <ChatBubbleSvg size={26} />
+                        </button>
+                    </div>
+
+                </div>
+
             )}
 
             {/* Chat panel */}
