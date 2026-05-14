@@ -189,10 +189,4 @@
     .process-stepper + .progress-track + div[role="tabpanel"] {
         text-align: left;
     }
-
-    @media (prefers-reduced-motion: no-preference) {
-        * {
-            animation-duration: 5s !important;
-        }
-    }
 }
